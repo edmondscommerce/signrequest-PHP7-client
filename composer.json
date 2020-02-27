@@ -1,40 +1,38 @@
 {
-    "name": "edmondscommerce/signrequest-php7-client",
-    "description": "SignRequest PHP7 Client",
-    "keywords": [
-        "signrequest",
-        "document signing"
-    ],
-    "license": "MIT",
-    "type": "project",
-    "require": {
-        "php": "^7.4.2",
-        "ext-json": "*",
-        "jane-php/open-api-runtime": "^5.0"
-    },
-    "require-dev": {
-        "edmondscommerce/phpqa": "@stable",
-        "phpstan/phpstan-phpunit": "^0.12",
-        "jane-php/open-api-3": "dev-master@dev"
-    },
-    "autoload": {
-        "psr-4": {
-            "SignRequest\\":"src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        },
-        "files": [
-            "app/helpers.php"
-        ]
-    },
-    "config": {
-        "preferred-install": {
-            "edmondscommerce/*": "source",
-            "*": "dist"
-        },
-        "bin-dir": "bin"
+  "name": "edmondscommerce/signrequest-php7-client",
+  "description": "SignRequest PHP7 Client",
+  "keywords": [
+    "signrequest",
+    "document signing"
+  ],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "php": "^7.4.2",
+    "ext-json": "*",
+    "jane-php/open-api-runtime": "^5.0"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "edmondscommerce/phpqa": "@stable",
+    "phpstan/phpstan-phpunit": "^0.12",
+    "jane-php/open-api-3": "dev-master@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "SignRequest\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SignRequest\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "preferred-install": {
+      "edmondscommerce/*": "source",
+      "*": "dist"
+    },
+    "bin-dir": "bin"
+  }
 }
