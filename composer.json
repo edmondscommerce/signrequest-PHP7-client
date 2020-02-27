@@ -15,7 +15,7 @@
     "require-dev": {
         "edmondscommerce/phpqa": "@stable",
         "phpstan/phpstan-phpunit": "^0.12",
-        "jane-php/open-api": "dev-master@dev"
+        "jane-php/open-api-3": "dev-master@dev"
     },
     "autoload": {
         "psr-4": {
