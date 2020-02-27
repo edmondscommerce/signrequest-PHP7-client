@@ -1,0 +1,40 @@
+{
+    "name": "edmondscommerce/signrequest-PHP7-client",
+    "description": "SignRequest PHP7 Client",
+    "keywords": [
+        "signrequest",
+        "document signing"
+    ],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^7.4.2",
+        "ext-json": "*",
+        "jane-php/open-api-runtime": "^5.0"
+    },
+    "require-dev": {
+        "edmondscommerce/phpqa": "@stable",
+        "phpstan/phpstan-phpunit": "^0.12",
+        "jane-php/open-api": "dev-master@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "SignRequest\\":"src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "config": {
+        "preferred-install": {
+            "edmondscommerce/*": "source",
+            "*": "dist"
+        },
+        "bin-dir": "bin"
+    }
+}
