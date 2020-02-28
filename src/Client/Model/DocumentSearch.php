@@ -11,67 +11,67 @@ final class DocumentSearch
     /**
      * @var string
      */
-    protected string $uuid;
+    protected $uuid;
     /**
      * @var DateTime
      */
-    protected DateTime $created;
+    protected $created;
     /**
      * `co`: converting, `ne`: new, `se`: sent, `vi`: viewed, `si`: signed, `do`: downloaded, `sd`: signed and downloaded, `ca`: cancelled, `de`: declined, `ec`: error converting, `es`: error sending, `xp`: expired.
      *
      * @var string
      */
-    protected string $status;
+    protected $status;
     /**
      * @var string
      */
-    protected string $who;
+    protected $who;
     /**
      * Defaults to filename.
      *
      * @var string
      */
-    protected string $name;
+    protected $name;
     /**
      * @var string
      */
-    protected string $autocomplete;
+    protected $autocomplete;
     /**
      * @var string
      */
-    protected string $fromEmail;
+    protected $fromEmail;
     /**
      * @var int
      */
-    protected int $nrExtraDocs;
+    protected $nrExtraDocs;
     /**
      * @var string[]
      */
-    protected array $signerEmails;
+    protected $signerEmails;
     /**
      * @var string
      */
-    protected string $statusDisplay;
+    protected $statusDisplay;
     /**
      * @var int
      */
-    protected int $createdTimestamp;
+    protected $createdTimestamp;
     /**
      * @var int
      */
-    protected int $finishedOnTimestamp;
+    protected $finishedOnTimestamp;
     /**
      * @var string
      */
-    protected string $parentDoc;
+    protected $parentDoc;
     /**
      * @var DateTime
      */
-    protected DateTime $finishedOn;
+    protected $finishedOn;
     /**
      * @var string
      */
-    protected string $subdomain;
+    protected $subdomain;
 
     public function getUuid(): string
     {
@@ -107,10 +107,6 @@ final class DocumentSearch
 
     /**
      * `co`: converting, `ne`: new, `se`: sent, `vi`: viewed, `si`: signed, `do`: downloaded, `sd`: signed and downloaded, `ca`: cancelled, `de`: declined, `ec`: error converting, `es`: error sending, `xp`: expired.
-     *
-     * @param string $status
-     *
-     * @return DocumentSearch
      */
     public function setStatus(string $status): self
     {
@@ -141,9 +137,7 @@ final class DocumentSearch
 
     /**
      * Defaults to filename.
-     * @param string $name
-     * @return DocumentSearch
-*/
+     */
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -197,8 +191,6 @@ final class DocumentSearch
 
     /**
      * @param string[] $signerEmails
-     *
-     * @return DocumentSearch
      */
     public function setSignerEmails(array $signerEmails): self
     {

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Normalizer;
 
-use SignRequest\Client\Model\SignRequestQuickCreate;
 use stdClass;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -34,7 +33,7 @@ final class SignRequestQuickCreateNormalizer implements DenormalizerInterface, N
         if (!is_object($data)) {
             throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
-        $object = new SignRequestQuickCreate();
+        $object = new \SignRequest\Client\Model\SignRequestQuickCreate();
         if (property_exists($data, 'from_email')) {
             $object->setFromEmail($data->{'from_email'});
         }

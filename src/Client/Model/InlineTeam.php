@@ -9,15 +9,15 @@ final class InlineTeam
     /**
      * @var string
      */
-    protected string $name;
+    protected $name;
     /**
      * @var string
      */
-    protected string $subdomain;
+    protected $subdomain;
     /**
      * @var string
      */
-    protected string $url;
+    protected $url;
 
     public function getName(): string
     {

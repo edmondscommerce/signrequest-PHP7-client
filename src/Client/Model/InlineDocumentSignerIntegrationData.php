@@ -9,7 +9,7 @@ final class InlineDocumentSignerIntegrationData
     /**
      * @var string|null
      */
-    protected ?string $integration;
+    protected $integration;
     /**
      * @var mixed
      */
@@ -37,8 +37,6 @@ final class InlineDocumentSignerIntegrationData
 
     /**
      * @param mixed $integrationData
-     *
-     * @return InlineDocumentSignerIntegrationData
      */
     public function setIntegrationData($integrationData): self
     {

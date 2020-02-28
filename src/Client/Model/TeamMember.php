@@ -9,31 +9,31 @@ final class TeamMember
     /**
      * @var string
      */
-    protected string $uuid;
+    protected $uuid;
     /**
      * @var string
      */
-    protected string $url;
+    protected $url;
     /**
      * @var User
      */
-    protected User $user;
+    protected $user;
     /**
      * @var TeamMemberTeam
      */
-    protected TeamMemberTeam $team;
+    protected $team;
     /**
      * @var bool
      */
-    protected bool $isAdmin;
+    protected $isAdmin;
     /**
      * @var bool
      */
-    protected bool $isActive;
+    protected $isActive;
     /**
      * @var bool
      */
-    protected bool $isOwner;
+    protected $isOwner;
 
     public function getUuid(): string
     {

@@ -4,16 +4,9 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Endpoint;
 
-use Jane\OpenApiRuntime\Client\BaseEndpoint;
-use Jane\OpenApiRuntime\Client\Psr7Endpoint;
-use Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
-use SignRequest\Client\Model\EventsGetResponse200;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Serializer\SerializerInterface;
-
-final class EventsList extends BaseEndpoint implements Psr7Endpoint
+final class EventsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
-    use Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     /**
      * @param array $queryParameters {
@@ -50,7 +43,7 @@ final class EventsList extends BaseEndpoint implements Psr7Endpoint
         return '/events/';
     }
 
-    public function getBody(SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -60,7 +53,7 @@ final class EventsList extends BaseEndpoint implements Psr7Endpoint
         return ['Accept' => ['application/json']];
     }
 
-    protected function getQueryOptionsResolver(): OptionsResolver
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['document__uuid', 'document__external_id', 'document__signrequest__who', 'document__signrequest__from_email', 'document__status', 'document__user__email', 'document__user__first_name', 'document__user__last_name', 'delivered', 'delivered_on', 'timestamp', 'status', 'event_type', 'page', 'limit']);
@@ -88,7 +81,7 @@ final class EventsList extends BaseEndpoint implements Psr7Endpoint
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null): ?EventsGetResponse200
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null): ?\SignRequest\Client\Model\EventsGetResponse200
     {
         if ($status === 200 && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'SignRequest\\Client\\Model\\EventsGetResponse200', 'json');

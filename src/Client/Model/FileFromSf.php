@@ -9,15 +9,15 @@ final class FileFromSf
     /**
      * @var string
      */
-    protected string $objectType;
+    protected $objectType;
     /**
      * @var string
      */
-    protected string $objectId;
+    protected $objectId;
     /**
      * @var string
      */
-    protected string $uid;
+    protected $uid;
 
     public function getObjectType(): string
     {

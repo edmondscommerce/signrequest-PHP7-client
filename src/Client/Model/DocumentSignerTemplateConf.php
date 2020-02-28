@@ -9,39 +9,39 @@ final class DocumentSignerTemplateConf
     /**
      * @var int
      */
-    protected int $signerIndex;
+    protected $signerIndex;
     /**
      * When `false` user does not need to sign, but will receive a copy of the signed document and signing log, see: [Copy only](#section/Additional-signing-methods/Copy-only).
      *
      * @var bool
      */
-    protected bool $needsToSign;
+    protected $needsToSign;
     /**
      * Require user to approve the document (without adding a signature), see: [Approve only](#section/Additional-signing-methods/Approve-only).
      *
      * @var bool
      */
-    protected bool $approveOnly;
+    protected $approveOnly;
     /**
      * Send notifications about the document and a copy of the signed document and signing log, but don't require them to take any action, see: [Notify only](#section/Additional-signing-methods/Notify-only).
      *
      * @var bool
      */
-    protected bool $notifyOnly;
+    protected $notifyOnly;
     /**
      * When used in combination with an embed url on the sender, after sender has signed, they will be redirected to the next `in_person` signer, see: [In person signing](#section/Additional-signing-methods/In-person-signing).
      *
      * @var bool
      */
-    protected bool $inPerson;
+    protected $inPerson;
     /**
      * @var int
      */
-    protected int $order;
+    protected $order;
     /**
      * @var Placeholder[]
      */
-    protected array $placeholders;
+    protected $placeholders;
 
     public function getSignerIndex(): int
     {
@@ -65,10 +65,6 @@ final class DocumentSignerTemplateConf
 
     /**
      * When `false` user does not need to sign, but will receive a copy of the signed document and signing log, see: [Copy only](#section/Additional-signing-methods/Copy-only).
-     *
-     * @param bool $needsToSign
-     *
-     * @return DocumentSignerTemplateConf
      */
     public function setNeedsToSign(bool $needsToSign): self
     {
@@ -87,9 +83,7 @@ final class DocumentSignerTemplateConf
 
     /**
      * Require user to approve the document (without adding a signature), see: [Approve only](#section/Additional-signing-methods/Approve-only).
-     * @param bool $approveOnly
-     * @return DocumentSignerTemplateConf
-*/
+     */
     public function setApproveOnly(bool $approveOnly): self
     {
         $this->approveOnly = $approveOnly;
@@ -107,9 +101,7 @@ final class DocumentSignerTemplateConf
 
     /**
      * Send notifications about the document and a copy of the signed document and signing log, but don't require them to take any action, see: [Notify only](#section/Additional-signing-methods/Notify-only).
-     * @param bool $notifyOnly
-     * @return DocumentSignerTemplateConf
-*/
+     */
     public function setNotifyOnly(bool $notifyOnly): self
     {
         $this->notifyOnly = $notifyOnly;
@@ -127,9 +119,7 @@ final class DocumentSignerTemplateConf
 
     /**
      * When used in combination with an embed url on the sender, after sender has signed, they will be redirected to the next `in_person` signer, see: [In person signing](#section/Additional-signing-methods/In-person-signing).
-     * @param bool $inPerson
-     * @return DocumentSignerTemplateConf
-*/
+     */
     public function setInPerson(bool $inPerson): self
     {
         $this->inPerson = $inPerson;
@@ -159,8 +149,6 @@ final class DocumentSignerTemplateConf
 
     /**
      * @param Placeholder[] $placeholders
-     *
-     * @return DocumentSignerTemplateConf
      */
     public function setPlaceholders(array $placeholders): self
     {

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use DateTime;
-use SignRequest\Client\Model\Event;
 use stdClass;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -35,7 +34,7 @@ final class EventNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (!is_object($data)) {
             throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
-        $object = new Event();
+        $object = new \SignRequest\Client\Model\Event();
         if (property_exists($data, 'uuid')) {
             $object->setUuid($data->{'uuid'});
         }

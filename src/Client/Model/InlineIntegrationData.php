@@ -9,7 +9,7 @@ final class InlineIntegrationData
     /**
      * @var string|null
      */
-    protected ?string $integration;
+    protected $integration;
     /**
      * @var mixed
      */
@@ -37,8 +37,6 @@ final class InlineIntegrationData
 
     /**
      * @param mixed $integrationData
-     *
-     * @return InlineIntegrationData
      */
     public function setIntegrationData($integrationData): self
     {

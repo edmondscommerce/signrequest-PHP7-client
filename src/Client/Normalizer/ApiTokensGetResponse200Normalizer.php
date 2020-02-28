@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Normalizer;
 
-use SignRequest\Client\Model\ApiTokensGetResponse200;
 use stdClass;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -34,7 +33,7 @@ final class ApiTokensGetResponse200Normalizer implements DenormalizerInterface, 
         if (!is_object($data)) {
             throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
-        $object = new ApiTokensGetResponse200();
+        $object = new \SignRequest\Client\Model\ApiTokensGetResponse200();
         if (property_exists($data, 'count')) {
             $object->setCount($data->{'count'});
         }

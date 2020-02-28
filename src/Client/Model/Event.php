@@ -11,43 +11,43 @@ final class Event
     /**
      * @var string
      */
-    protected string $uuid;
+    protected $uuid;
     /**
      * @var string
      */
-    protected string $status;
+    protected $status;
     /**
      * @var string
      */
-    protected string $eventType;
+    protected $eventType;
     /**
      * @var bool
      */
-    protected bool $delivered;
+    protected $delivered;
     /**
      * @var DateTime
      */
-    protected DateTime $deliveredOn;
+    protected $deliveredOn;
     /**
      * @var int
      */
-    protected int $callbackStatusCode;
+    protected $callbackStatusCode;
     /**
      * @var DateTime
      */
-    protected DateTime $timestamp;
+    protected $timestamp;
     /**
      * @var EventTeam
      */
-    protected EventTeam $team;
+    protected $team;
     /**
      * @var Document
      */
-    protected Document $document;
+    protected $document;
     /**
      * @var Signer
      */
-    protected Signer $signer;
+    protected $signer;
 
     public function getUuid(): string
     {

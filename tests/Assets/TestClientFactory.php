@@ -1,11 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SignRequest\Tests\Assets;
 
 use SignRequest\Client\Client;
 use Symfony\Component\HttpClient\HttpClient;
 
-class TestClientFactory
+final class TestClientFactory
 {
     public static function create(): Client
     {

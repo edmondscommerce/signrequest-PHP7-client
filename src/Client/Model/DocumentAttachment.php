@@ -9,45 +9,45 @@ final class DocumentAttachment
     /**
      * @var string
      */
-    protected string $url;
+    protected $url;
     /**
      * @var string
      */
-    protected string $uuid;
+    protected $uuid;
     /**
      * Defaults to filename, including extension.
      *
      * @var string|null
      */
-    protected ?string $name;
+    protected $name;
     /**
      * Temporary URL to document attachment, expires in five minutes.
      *
      * @var string|null
      */
-    protected ?string $file;
+    protected $file;
     /**
      * Base64 encoded document content.
      *
      * @var string|null
      */
-    protected ?string $fileFromContent;
+    protected $fileFromContent;
     /**
      * Filename, including extension. Required when using `file_from_content`.
      *
      * @var string|null
      */
-    protected ?string $fileFromContentName;
+    protected $fileFromContentName;
     /**
      * Publicly accessible URL of document to be downloaded by SignRequest.
      *
      * @var string|null
      */
-    protected ?string $fileFromUrl;
+    protected $fileFromUrl;
     /**
      * @var string
      */
-    protected string $document;
+    protected $document;
 
     public function getUrl(): string
     {
@@ -83,10 +83,6 @@ final class DocumentAttachment
 
     /**
      * Defaults to filename, including extension.
-     *
-     * @param string|null $name
-     *
-     * @return DocumentAttachment
      */
     public function setName(?string $name): self
     {
@@ -105,9 +101,7 @@ final class DocumentAttachment
 
     /**
      * Temporary URL to document attachment, expires in five minutes.
-     * @param string|null $file
-     * @return DocumentAttachment
-*/
+     */
     public function setFile(?string $file): self
     {
         $this->file = $file;
@@ -125,9 +119,7 @@ final class DocumentAttachment
 
     /**
      * Base64 encoded document content.
-     * @param string|null $fileFromContent
-     * @return DocumentAttachment
-*/
+     */
     public function setFileFromContent(?string $fileFromContent): self
     {
         $this->fileFromContent = $fileFromContent;
@@ -145,9 +137,7 @@ final class DocumentAttachment
 
     /**
      * Filename, including extension. Required when using `file_from_content`.
-     * @param string|null $fileFromContentName
-     * @return DocumentAttachment
-*/
+     */
     public function setFileFromContentName(?string $fileFromContentName): self
     {
         $this->fileFromContentName = $fileFromContentName;
@@ -165,9 +155,7 @@ final class DocumentAttachment
 
     /**
      * Publicly accessible URL of document to be downloaded by SignRequest.
-     * @param string|null $fileFromUrl
-     * @return DocumentAttachment
-*/
+     */
     public function setFileFromUrl(?string $fileFromUrl): self
     {
         $this->fileFromUrl = $fileFromUrl;

@@ -31,6 +31,5 @@ final class QuickCreate
     private function getRequestBody(): SignRequestQuickCreate
     {
         $body = new SignRequestQuickCreate();
-
     }
 }

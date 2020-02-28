@@ -9,19 +9,19 @@ final class SignrequestsGetResponse200
     /**
      * @var int
      */
-    protected int $count;
+    protected $count;
     /**
      * @var string|null
      */
-    protected ?string $next;
+    protected $next;
     /**
      * @var string|null
      */
-    protected ?string $previous;
+    protected $previous;
     /**
      * @var SignRequest[]
      */
-    protected array $results;
+    protected $results;
 
     public function getCount(): int
     {
@@ -69,8 +69,6 @@ final class SignrequestsGetResponse200
 
     /**
      * @param SignRequest[] $results
-     *
-     * @return SignrequestsGetResponse200
      */
     public function setResults(array $results): self
     {

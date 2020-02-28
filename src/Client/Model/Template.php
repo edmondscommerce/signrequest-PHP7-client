@@ -9,35 +9,35 @@ final class Template
     /**
      * @var string
      */
-    protected string $url;
+    protected $url;
     /**
      * Defaults to filename.
      *
      * @var string
      */
-    protected string $name;
+    protected $name;
     /**
      * @var string
      */
-    protected string $uuid;
+    protected $uuid;
     /**
      * @var User
      */
-    protected User $user;
+    protected $user;
     /**
      * @var TemplateTeam
      */
-    protected TemplateTeam $team;
+    protected $team;
     /**
      * `m`: only me, `mo`: me and others, `o`: only others.
      *
      * @var string
      */
-    protected string $who;
+    protected $who;
     /**
      * @var DocumentSignerTemplateConf[]
      */
-    protected array $signers;
+    protected $signers;
 
     public function getUrl(): string
     {
@@ -61,10 +61,6 @@ final class Template
 
     /**
      * Defaults to filename.
-     *
-     * @param string $name
-     *
-     * @return Template
      */
     public function setName(string $name): self
     {
@@ -119,9 +115,7 @@ final class Template
 
     /**
      * `m`: only me, `mo`: me and others, `o`: only others.
-     * @param string $who
-     * @return Template
-*/
+     */
     public function setWho(string $who): self
     {
         $this->who = $who;
@@ -139,8 +133,6 @@ final class Template
 
     /**
      * @param DocumentSignerTemplateConf[] $signers
-     *
-     * @return Template
      */
     public function setSigners(array $signers): self
     {

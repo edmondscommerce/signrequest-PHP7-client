@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Normalizer;
 
-use SignRequest\Client\Model\TeamsGetResponse200;
 use stdClass;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -34,7 +33,7 @@ final class TeamsGetResponse200Normalizer implements DenormalizerInterface, Norm
         if (!is_object($data)) {
             throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
-        $object = new TeamsGetResponse200();
+        $object = new \SignRequest\Client\Model\TeamsGetResponse200();
         if (property_exists($data, 'count')) {
             $object->setCount($data->{'count'});
         }

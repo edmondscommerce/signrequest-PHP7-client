@@ -1,12 +1,15 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SignRequest\Tests\Assets\Documents;
 
+use InvalidArgumentException;
 use stdClass;
 use function implode;
 use function in_array;
 
-class HasTagsPrefillTags implements PrefillTagsInterface
+final class HasTagsPrefillTags implements PrefillTagsInterface
 {
     public const ID_SIGNER1_COMPANY_NAME    = 'signer1_company_name';
     public const ID_SIGNER1_COMPANY_COUNTRY = 'signer1_company_country';
@@ -36,8 +39,8 @@ class HasTagsPrefillTags implements PrefillTagsInterface
     public function __construct(PrefillTagData ...$tags)
     {
         foreach ($tags as $tag) {
-            if (false === in_array($tag->getId(), self::IDS, true)) {
-                throw new \InvalidArgumentException(
+            if (in_array($tag->getId(), self::IDS, true) === false) {
+                throw new InvalidArgumentException(
                     'Invalid tag ID ' . $tag->getId(),
                     ' must be one of ' . implode(', ', self::IDS)
                 );
@@ -47,12 +50,10 @@ class HasTagsPrefillTags implements PrefillTagsInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getData(): array
     {
         return $this->tags;
     }
-
-
 }

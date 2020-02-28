@@ -11,47 +11,47 @@ final class Team
     /**
      * @var string
      */
-    protected string $name;
+    protected $name;
     /**
      * @var string
      */
-    protected string $subdomain;
+    protected $subdomain;
     /**
      * @var string
      */
-    protected string $url;
+    protected $url;
     /**
      * @var string|null
      */
-    protected ?string $logo;
+    protected $logo;
     /**
      * @var string
      */
-    protected string $phone;
+    protected $phone;
     /**
      * @var string
      */
-    protected string $primaryColor;
+    protected $primaryColor;
     /**
      * @var string|null
      */
-    protected ?string $eventsCallbackUrl;
+    protected $eventsCallbackUrl;
     /**
      * @var InlineTeamMember[]
      */
-    protected array $members;
+    protected $members;
     /**
      * When filled this team will be deleted after this date.
      *
      * @var DateTime
      */
-    protected DateTime $deleteAfter;
+    protected $deleteAfter;
     /**
      * Indicates whether team is in Sandbox mode.
      *
      * @var bool
      */
-    protected bool $sandbox;
+    protected $sandbox;
 
     public function getName(): string
     {
@@ -147,8 +147,6 @@ final class Team
 
     /**
      * @param InlineTeamMember[] $members
-     *
-     * @return Team
      */
     public function setMembers(array $members): self
     {
@@ -167,10 +165,6 @@ final class Team
 
     /**
      * When filled this team will be deleted after this date.
-     *
-     * @param DateTime $deleteAfter
-     *
-     * @return Team
      */
     public function setDeleteAfter(DateTime $deleteAfter): self
     {
@@ -189,9 +183,7 @@ final class Team
 
     /**
      * Indicates whether team is in Sandbox mode.
-     * @param bool $sandbox
-     * @return Team
-*/
+     */
     public function setSandbox(bool $sandbox): self
     {
         $this->sandbox = $sandbox;

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use DateTime;
-use SignRequest\Client\Model\Placeholder;
 use stdClass;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -35,7 +34,7 @@ final class PlaceholderNormalizer implements DenormalizerInterface, NormalizerIn
         if (!is_object($data)) {
             throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
-        $object = new Placeholder();
+        $object = new \SignRequest\Client\Model\Placeholder();
         if (property_exists($data, 'uuid')) {
             $object->setUuid($data->{'uuid'});
         }

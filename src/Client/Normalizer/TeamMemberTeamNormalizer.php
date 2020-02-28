@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Normalizer;
 
-use SignRequest\Client\Model\TeamMemberTeam;
 use stdClass;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -34,7 +33,7 @@ final class TeamMemberTeamNormalizer implements DenormalizerInterface, Normalize
         if (!is_object($data)) {
             throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
-        $object = new TeamMemberTeam();
+        $object = new \SignRequest\Client\Model\TeamMemberTeam();
         if (property_exists($data, 'name')) {
             $object->setName($data->{'name'});
         }

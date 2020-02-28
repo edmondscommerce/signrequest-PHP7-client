@@ -9,15 +9,15 @@ final class InviteMember
     /**
      * @var string
      */
-    protected string $email;
+    protected $email;
     /**
      * @var bool
      */
-    protected bool $isAdmin = false;
+    protected $isAdmin = false;
     /**
      * @var bool
      */
-    protected bool $isOwner = false;
+    protected $isOwner = false;
 
     public function getEmail(): string
     {

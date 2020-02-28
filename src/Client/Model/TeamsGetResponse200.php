@@ -9,19 +9,19 @@ final class TeamsGetResponse200
     /**
      * @var int
      */
-    protected int $count;
+    protected $count;
     /**
      * @var string|null
      */
-    protected ?string $next;
+    protected $next;
     /**
      * @var string|null
      */
-    protected ?string $previous;
+    protected $previous;
     /**
      * @var Team[]
      */
-    protected array $results;
+    protected $results;
 
     public function getCount(): int
     {
@@ -69,8 +69,6 @@ final class TeamsGetResponse200
 
     /**
      * @param Team[] $results
-     *
-     * @return TeamsGetResponse200
      */
     public function setResults(array $results): self
     {

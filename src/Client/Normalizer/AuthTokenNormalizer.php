@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Normalizer;
 
-use SignRequest\Client\Model\AuthToken;
 use stdClass;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -34,7 +33,7 @@ final class AuthTokenNormalizer implements DenormalizerInterface, NormalizerInte
         if (!is_object($data)) {
             throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
-        $object = new AuthToken();
+        $object = new \SignRequest\Client\Model\AuthToken();
         if (property_exists($data, 'email')) {
             $object->setEmail($data->{'email'});
         }

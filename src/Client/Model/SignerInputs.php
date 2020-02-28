@@ -11,31 +11,31 @@ final class SignerInputs
     /**
      * @var string|null
      */
-    protected ?string $type;
+    protected $type;
     /**
      * @var int
      */
-    protected int $pageIndex;
+    protected $pageIndex;
     /**
      * @var string
      */
-    protected string $text;
+    protected $text;
     /**
      * @var bool|null
      */
-    protected ?bool $checkboxValue;
+    protected $checkboxValue;
     /**
      * @var DateTime|null
      */
-    protected ?DateTime $dateValue;
+    protected $dateValue;
     /**
      * @var string|null
      */
-    protected ?string $externalId;
+    protected $externalId;
     /**
      * @var string|null
      */
-    protected ?string $placeholderUuid;
+    protected $placeholderUuid;
 
     public function getType(): ?string
     {

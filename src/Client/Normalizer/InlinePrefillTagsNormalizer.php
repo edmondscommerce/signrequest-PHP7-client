@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use DateTime;
-use SignRequest\Client\Model\InlinePrefillTags;
 use stdClass;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -35,7 +34,7 @@ final class InlinePrefillTagsNormalizer implements DenormalizerInterface, Normal
         if (!is_object($data)) {
             throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
-        $object = new InlinePrefillTags();
+        $object = new \SignRequest\Client\Model\InlinePrefillTags();
         if (property_exists($data, 'external_id') && $data->{'external_id'} !== null) {
             $object->setExternalId($data->{'external_id'});
         } elseif (property_exists($data, 'external_id') && $data->{'external_id'} === null) {

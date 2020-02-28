@@ -9,7 +9,7 @@ final class SignrequestsUuidResendSignrequestEmailPostResponse201
     /**
      * @var string
      */
-    protected string $detail;
+    protected $detail;
 
     public function getDetail(): string
     {

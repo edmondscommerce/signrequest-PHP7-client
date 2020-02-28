@@ -4,16 +4,9 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Endpoint;
 
-use Jane\OpenApiRuntime\Client\BaseEndpoint;
-use Jane\OpenApiRuntime\Client\Psr7Endpoint;
-use Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
-use SignRequest\Client\Model\SignrequestsGetResponse200;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Serializer\SerializerInterface;
-
-final class SignrequestsList extends BaseEndpoint implements Psr7Endpoint
+final class SignrequestsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
-    use Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     /**
      * @param array $queryParameters {
@@ -39,7 +32,7 @@ final class SignrequestsList extends BaseEndpoint implements Psr7Endpoint
         return '/signrequests/';
     }
 
-    public function getBody(SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -49,7 +42,7 @@ final class SignrequestsList extends BaseEndpoint implements Psr7Endpoint
         return ['Accept' => ['application/json']];
     }
 
-    protected function getQueryOptionsResolver(): OptionsResolver
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['who', 'from_email', 'page', 'limit']);
@@ -66,7 +59,7 @@ final class SignrequestsList extends BaseEndpoint implements Psr7Endpoint
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null): ?SignrequestsGetResponse200
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null): ?\SignRequest\Client\Model\SignrequestsGetResponse200
     {
         if ($status === 200 && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'SignRequest\\Client\\Model\\SignrequestsGetResponse200', 'json');

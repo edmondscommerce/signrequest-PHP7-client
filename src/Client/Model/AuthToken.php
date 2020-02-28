@@ -9,27 +9,27 @@ final class AuthToken
     /**
      * @var string
      */
-    protected string $email;
+    protected $email;
     /**
      * @var string
      */
-    protected string $password;
+    protected $password;
     /**
      * @var string
      */
-    protected string $subdomain;
+    protected $subdomain;
     /**
      * @var string
      */
-    protected string $name;
+    protected $name;
     /**
      * @var string
      */
-    protected string $key;
+    protected $key;
     /**
      * @var string
      */
-    protected string $url;
+    protected $url;
 
     public function getEmail(): string
     {

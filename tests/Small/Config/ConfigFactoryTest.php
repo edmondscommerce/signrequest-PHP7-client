@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SignRequest\Tests\Small\Config;
 
@@ -7,10 +9,14 @@ use PHPUnit\Framework\TestCase;
 use SignRequest\Config\ConfigFactory;
 
 /**
- * @covers \SignRequest\Config\ConfigFactory
  * @covers \SignRequest\Config\Config
+ * @covers \SignRequest\Config\ConfigFactory
+ *
+ * @internal
+ *
+ * @small
  */
-class ConfigFactoryTest extends TestCase
+final class ConfigFactoryTest extends TestCase
 {
     /**
      * @test
@@ -37,6 +43,5 @@ class ConfigFactoryTest extends TestCase
             ConfigFactory::KEY_SUBDOMAIN => 'foo',
         ];
         $actual = ConfigFactory::createConfigFromArray($data);
-
     }
 }

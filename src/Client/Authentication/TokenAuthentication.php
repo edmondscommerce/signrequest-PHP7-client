@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Authentication;
 
-use Http\Client\Common\Plugin;
-use Http\Client\Common\Plugin\AuthenticationPlugin;
-use Http\Message\Authentication;
-use Psr\Http\Message\RequestInterface;
-
 final class TokenAuthentication implements \Jane\OpenApiRuntime\Client\Authentication
 {
     private $apiKey;
@@ -18,9 +13,9 @@ final class TokenAuthentication implements \Jane\OpenApiRuntime\Client\Authentic
         $this->{'apiKey'} = $apiKey;
     }
 
-    public function getPlugin(): Plugin
+    public function getPlugin(): \Http\Client\Common\Plugin
     {
-        return new AuthenticationPlugin(new class($this->{'apiKey'}) implements Authentication {
+        return new \Http\Client\Common\Plugin\AuthenticationPlugin(new class($this->{'apiKey'}) implements \Http\Message\Authentication {
             private $apiKey;
 
             public function __construct(string $apiKey)
@@ -28,7 +23,7 @@ final class TokenAuthentication implements \Jane\OpenApiRuntime\Client\Authentic
                 $this->{'apiKey'} = $apiKey;
             }
 
-            public function authenticate(RequestInterface $request): RequestInterface
+            public function authenticate(\Psr\Http\Message\RequestInterface $request)
             {
                 return $request->withHeader('Authorization', $this->{'apiKey'});
             }

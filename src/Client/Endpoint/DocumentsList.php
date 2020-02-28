@@ -4,16 +4,9 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Endpoint;
 
-use Jane\OpenApiRuntime\Client\BaseEndpoint;
-use Jane\OpenApiRuntime\Client\Psr7Endpoint;
-use Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
-use SignRequest\Client\Model\DocumentsGetResponse200;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Serializer\SerializerInterface;
-
-final class DocumentsList extends BaseEndpoint implements Psr7Endpoint
+final class DocumentsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
-    use Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     /**
      * @param array $queryParameters {
@@ -46,7 +39,7 @@ final class DocumentsList extends BaseEndpoint implements Psr7Endpoint
         return '/documents/';
     }
 
-    public function getBody(SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -56,7 +49,7 @@ final class DocumentsList extends BaseEndpoint implements Psr7Endpoint
         return ['Accept' => ['application/json']];
     }
 
-    protected function getQueryOptionsResolver(): OptionsResolver
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['external_id', 'signrequest__who', 'signrequest__from_email', 'status', 'user__email', 'user__first_name', 'user__last_name', 'created', 'modified', 'page', 'limit']);
@@ -80,7 +73,7 @@ final class DocumentsList extends BaseEndpoint implements Psr7Endpoint
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null): ?DocumentsGetResponse200
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null): ?\SignRequest\Client\Model\DocumentsGetResponse200
     {
         if ($status === 200 && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'SignRequest\\Client\\Model\\DocumentsGetResponse200', 'json');

@@ -9,21 +9,21 @@ final class SignerAttachment
     /**
      * @var string
      */
-    protected string $uuid;
+    protected $uuid;
     /**
      * Defaults to filename.
      *
      * @var string
      */
-    protected string $name;
+    protected $name;
     /**
      * @var string|null
      */
-    protected ?string $file;
+    protected $file;
     /**
      * @var RequiredAttachment
      */
-    protected RequiredAttachment $forAttachment;
+    protected $forAttachment;
 
     public function getUuid(): string
     {
@@ -47,10 +47,6 @@ final class SignerAttachment
 
     /**
      * Defaults to filename.
-     *
-     * @param string $name
-     *
-     * @return SignerAttachment
      */
     public function setName(string $name): self
     {

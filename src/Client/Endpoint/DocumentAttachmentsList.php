@@ -4,16 +4,9 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Endpoint;
 
-use Jane\OpenApiRuntime\Client\BaseEndpoint;
-use Jane\OpenApiRuntime\Client\Psr7Endpoint;
-use Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
-use SignRequest\Client\Model\DocumentAttachmentsGetResponse200;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Serializer\SerializerInterface;
-
-final class DocumentAttachmentsList extends BaseEndpoint implements Psr7Endpoint
+final class DocumentAttachmentsList extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
-    use Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
     /**
      * @param array $queryParameters {
@@ -40,7 +33,7 @@ final class DocumentAttachmentsList extends BaseEndpoint implements Psr7Endpoint
         return '/document-attachments/';
     }
 
-    public function getBody(SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -50,7 +43,7 @@ final class DocumentAttachmentsList extends BaseEndpoint implements Psr7Endpoint
         return ['Accept' => ['application/json']];
     }
 
-    protected function getQueryOptionsResolver(): OptionsResolver
+    protected function getQueryOptionsResolver(): \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(['document__uuid', 'document__external_id', 'created', 'page', 'limit']);
@@ -68,7 +61,7 @@ final class DocumentAttachmentsList extends BaseEndpoint implements Psr7Endpoint
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null): ?DocumentAttachmentsGetResponse200
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null): ?\SignRequest\Client\Model\DocumentAttachmentsGetResponse200
     {
         if ($status === 200 && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'SignRequest\\Client\\Model\\DocumentAttachmentsGetResponse200', 'json');

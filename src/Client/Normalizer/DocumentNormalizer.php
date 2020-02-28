@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use DateTime;
-use SignRequest\Client\Model\Document;
 use stdClass;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -35,7 +34,7 @@ final class DocumentNormalizer implements DenormalizerInterface, NormalizerInter
         if (!is_object($data)) {
             throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
-        $object = new Document();
+        $object = new \SignRequest\Client\Model\Document();
         if (property_exists($data, 'url')) {
             $object->setUrl($data->{'url'});
         }

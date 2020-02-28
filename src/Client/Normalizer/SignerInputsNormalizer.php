@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use DateTime;
-use SignRequest\Client\Model\SignerInputs;
 use stdClass;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
@@ -35,7 +34,7 @@ final class SignerInputsNormalizer implements DenormalizerInterface, NormalizerI
         if (!is_object($data)) {
             throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
         }
-        $object = new SignerInputs();
+        $object = new \SignRequest\Client\Model\SignerInputs();
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
         } elseif (property_exists($data, 'type') && $data->{'type'} === null) {

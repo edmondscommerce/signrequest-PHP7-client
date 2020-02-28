@@ -11,35 +11,35 @@ final class Placeholder
     /**
      * @var string
      */
-    protected string $uuid;
+    protected $uuid;
     /**
      * @var string
      */
-    protected string $type;
+    protected $type;
     /**
      * @var int
      */
-    protected int $pageIndex;
+    protected $pageIndex;
     /**
      * @var bool
      */
-    protected bool $prefill;
+    protected $prefill;
     /**
      * @var string|null
      */
-    protected ?string $text;
+    protected $text;
     /**
      * @var bool|null
      */
-    protected ?bool $checkboxValue;
+    protected $checkboxValue;
     /**
      * @var DateTime|null
      */
-    protected ?DateTime $dateValue;
+    protected $dateValue;
     /**
      * @var string|null
      */
-    protected ?string $externalId;
+    protected $externalId;
 
     public function getUuid(): string
     {

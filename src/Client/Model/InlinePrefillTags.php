@@ -11,19 +11,19 @@ final class InlinePrefillTags
     /**
      * @var string|null
      */
-    protected ?string $externalId;
+    protected $externalId;
     /**
      * @var string|null
      */
-    protected ?string $text;
+    protected $text;
     /**
      * @var bool|null
      */
-    protected ?bool $checkboxValue;
+    protected $checkboxValue;
     /**
      * @var DateTime|null
      */
-    protected ?DateTime $dateValue;
+    protected $dateValue;
 
     public function getExternalId(): ?string
     {

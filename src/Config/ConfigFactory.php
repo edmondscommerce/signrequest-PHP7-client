@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SignRequest\Config;
 
@@ -6,7 +8,7 @@ use InvalidArgumentException;
 use function array_key_exists;
 use function implode;
 
-class ConfigFactory
+final class ConfigFactory
 {
     public const KEY_TOKEN     = 'signrequest_token';
     public const KEY_SUBDOMAIN = 'signrequest_subdomain';
@@ -34,7 +36,7 @@ class ConfigFactory
     {
         $missing = [];
         foreach ($keys as $key) {
-            if (false === array_key_exists($key, $data)) {
+            if (array_key_exists($key, $data) === false) {
                 $missing[] = $key;
             }
         }

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SignRequest\Tests\Assets\Documents;
 
@@ -8,7 +10,6 @@ interface PrefillTagsInterface
 
     /**
      * @see https://signrequest.com/api/v1/docs/#section/Preparing-a-document/Prefill-tags-templates
-     * @return array
      */
     public function getData(): array;
 }

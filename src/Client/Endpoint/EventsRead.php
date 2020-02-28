@@ -4,16 +4,10 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Endpoint;
 
-use Jane\OpenApiRuntime\Client\BaseEndpoint;
-use Jane\OpenApiRuntime\Client\Psr7Endpoint;
-use Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
-use SignRequest\Client\Model\Event;
-use Symfony\Component\Serializer\SerializerInterface;
-
-final class EventsRead extends BaseEndpoint implements Psr7Endpoint
+final class EventsRead extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
-    use Psr7EndpointTrait;
-    protected int $id;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    protected $id;
 
     /**
      * @param int $id a unique integer value identifying this event
@@ -33,7 +27,7 @@ final class EventsRead extends BaseEndpoint implements Psr7Endpoint
         return str_replace(['{id}'], [$this->id], '/events/{id}/');
     }
 
-    public function getBody(SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -46,7 +40,7 @@ final class EventsRead extends BaseEndpoint implements Psr7Endpoint
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null): ?Event
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null): ?\SignRequest\Client\Model\Event
     {
         if ($status === 200 && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'SignRequest\\Client\\Model\\Event', 'json');

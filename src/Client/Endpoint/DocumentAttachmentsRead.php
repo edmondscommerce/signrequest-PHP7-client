@@ -4,16 +4,10 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Endpoint;
 
-use Jane\OpenApiRuntime\Client\BaseEndpoint;
-use Jane\OpenApiRuntime\Client\Psr7Endpoint;
-use Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
-use SignRequest\Client\Model\DocumentAttachment;
-use Symfony\Component\Serializer\SerializerInterface;
-
-final class DocumentAttachmentsRead extends BaseEndpoint implements Psr7Endpoint
+final class DocumentAttachmentsRead extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
-    use Psr7EndpointTrait;
-    protected string $uuid;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
+    protected $uuid;
 
     public function __construct(string $uuid)
     {
@@ -30,7 +24,7 @@ final class DocumentAttachmentsRead extends BaseEndpoint implements Psr7Endpoint
         return str_replace(['{uuid}'], [$this->uuid], '/document-attachments/{uuid}/');
     }
 
-    public function getBody(SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -43,7 +37,7 @@ final class DocumentAttachmentsRead extends BaseEndpoint implements Psr7Endpoint
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null): ?DocumentAttachment
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null): ?\SignRequest\Client\Model\DocumentAttachment
     {
         if ($status === 200 && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'SignRequest\\Client\\Model\\DocumentAttachment', 'json');

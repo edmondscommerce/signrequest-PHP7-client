@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SignRequest\Tests\Assets\Documents;
 
@@ -6,7 +8,7 @@ use InvalidArgumentException;
 use stdClass;
 use function implode;
 
-class PrefillTagData
+final class PrefillTagData
 {
     public const TYPE_TEXT     = 'text';
     public const TYPE_DATE     = 'date';
@@ -20,14 +22,9 @@ class PrefillTagData
     private string $type;
     private string $value;
 
-    /**
-     * @param string $id
-     * @param string $type
-     * @param string $value
-     */
     public function __construct(string $id, string $type, string $value)
     {
-        if (false === in_array($type, self::TYPES, true)) {
+        if (in_array($type, self::TYPES, true) === false) {
             throw new InvalidArgumentException(
                 'Invalid type ' . $type .
                 ', must be one of ' . implode(',', self::TYPES)
@@ -77,5 +74,4 @@ class PrefillTagData
 
         return $tag;
     }
-
 }

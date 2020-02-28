@@ -9,11 +9,11 @@ final class SignrequestsUuidCancelSignrequestPostResponse201
     /**
      * @var string
      */
-    protected string $detail;
+    protected $detail;
     /**
      * @var bool
      */
-    protected bool $cancelled;
+    protected $cancelled;
 
     public function getDetail(): string
     {

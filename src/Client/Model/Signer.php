@@ -11,159 +11,159 @@ final class Signer
     /**
      * @var string
      */
-    protected string $email;
+    protected $email;
     /**
      * @var string
      */
-    protected string $displayName;
+    protected $displayName;
     /**
      * @var string
      */
-    protected string $firstName;
+    protected $firstName;
     /**
      * @var string
      */
-    protected string $lastName;
+    protected $lastName;
     /**
      * @var bool
      */
-    protected bool $emailViewed;
+    protected $emailViewed;
     /**
      * @var bool
      */
-    protected bool $viewed;
+    protected $viewed;
     /**
      * @var bool
      */
-    protected bool $signed;
+    protected $signed;
     /**
      * @var bool
      */
-    protected bool $downloaded;
+    protected $downloaded;
     /**
      * @var DateTime
      */
-    protected DateTime $signedOn;
+    protected $signedOn;
     /**
      * When `false` user does not need to sign, but will receive a copy of the signed document and signing log, see: [Copy only](#section/Additional-signing-methods/Copy-only).
      *
      * @var bool
      */
-    protected bool $needsToSign = true;
+    protected $needsToSign = true;
     /**
      * Require user to approve the document (without adding a signature), see: [Approve only](#section/Additional-signing-methods/Approve-only).
      *
      * @var bool
      */
-    protected bool $approveOnly;
+    protected $approveOnly;
     /**
      * Send notifications about the document and a copy of the signed document and signing log, but don't require them to take any action, see: [Notify only](#section/Additional-signing-methods/Notify-only).
      *
      * @var bool
      */
-    protected bool $notifyOnly;
+    protected $notifyOnly;
     /**
      * When used in combination with an embed url on the sender, after sender has signed, they will be redirected to the next `in_person` signer, see: [In person signing](#section/Additional-signing-methods/In-person-signing).
      *
      * @var bool
      */
-    protected bool $inPerson;
+    protected $inPerson;
     /**
      * @var int
      */
-    protected int $order;
+    protected $order;
     /**
      * @var string|null
      */
-    protected ?string $language;
+    protected $language;
     /**
      * @var bool
      */
-    protected bool $forceLanguage;
+    protected $forceLanguage;
     /**
      * @var bool
      */
-    protected bool $emailed;
+    protected $emailed;
     /**
      * @var string|null
      */
-    protected ?string $verifyPhoneNumber;
+    protected $verifyPhoneNumber;
     /**
      * @var string|null
      */
-    protected ?string $verifyBankAccount;
+    protected $verifyBankAccount;
     /**
      * @var bool
      */
-    protected bool $declined;
+    protected $declined;
     /**
      * @var DateTime
      */
-    protected DateTime $declinedOn;
+    protected $declinedOn;
     /**
      * @var bool
      */
-    protected bool $forwarded;
+    protected $forwarded;
     /**
      * @var DateTime
      */
-    protected DateTime $forwardedOn;
+    protected $forwardedOn;
     /**
      * @var string
      */
-    protected string $forwardedToEmail;
+    protected $forwardedToEmail;
     /**
      * @var string
      */
-    protected string $forwardedReason;
+    protected $forwardedReason;
     /**
      * @var string
      */
-    protected string $message;
+    protected $message;
     /**
      * @var string|null
      */
-    protected ?string $embedUrlUserId;
+    protected $embedUrlUserId;
     /**
      * @var SignerInputs[]
      */
-    protected array $inputs;
+    protected $inputs;
     /**
      * Place an approval stamp on a document when a signer approves a document.
      *
      * @var bool|null
      */
-    protected ?bool $useStampForApproveOnly;
+    protected $useStampForApproveOnly;
     /**
      * @var string
      */
-    protected string $embedUrl;
+    protected $embedUrl;
     /**
      * @var SignerAttachment[]
      */
-    protected array $attachments;
+    protected $attachments;
     /**
      * @var string|null
      */
-    protected ?string $redirectUrl;
+    protected $redirectUrl;
     /**
      * @var string|null
      */
-    protected ?string $redirectUrlDeclined;
+    protected $redirectUrlDeclined;
     /**
      * @var string
      */
-    protected string $afterDocument;
+    protected $afterDocument;
     /**
      * @var InlineDocumentSignerIntegrationData[]
      */
-    protected array $integrations;
+    protected $integrations;
     /**
      * Require the signer to enter this password before signing a document. This field is write only.
      *
      * @var string
      */
-    protected string $password;
+    protected $password;
 
     public function getEmail(): string
     {
@@ -283,10 +283,6 @@ final class Signer
 
     /**
      * When `false` user does not need to sign, but will receive a copy of the signed document and signing log, see: [Copy only](#section/Additional-signing-methods/Copy-only).
-     *
-     * @param bool $needsToSign
-     *
-     * @return Signer
      */
     public function setNeedsToSign(bool $needsToSign): self
     {
@@ -305,9 +301,7 @@ final class Signer
 
     /**
      * Require user to approve the document (without adding a signature), see: [Approve only](#section/Additional-signing-methods/Approve-only).
-     * @param bool $approveOnly
-     * @return Signer
-*/
+     */
     public function setApproveOnly(bool $approveOnly): self
     {
         $this->approveOnly = $approveOnly;
@@ -325,9 +319,7 @@ final class Signer
 
     /**
      * Send notifications about the document and a copy of the signed document and signing log, but don't require them to take any action, see: [Notify only](#section/Additional-signing-methods/Notify-only).
-     * @param bool $notifyOnly
-     * @return Signer
-*/
+     */
     public function setNotifyOnly(bool $notifyOnly): self
     {
         $this->notifyOnly = $notifyOnly;
@@ -345,9 +337,7 @@ final class Signer
 
     /**
      * When used in combination with an embed url on the sender, after sender has signed, they will be redirected to the next `in_person` signer, see: [In person signing](#section/Additional-signing-methods/In-person-signing).
-     * @param bool $inPerson
-     * @return Signer
-*/
+     */
     public function setInPerson(bool $inPerson): self
     {
         $this->inPerson = $inPerson;
@@ -533,8 +523,6 @@ final class Signer
 
     /**
      * @param SignerInputs[] $inputs
-     *
-     * @return Signer
      */
     public function setInputs(array $inputs): self
     {
@@ -553,9 +541,7 @@ final class Signer
 
     /**
      * Place an approval stamp on a document when a signer approves a document.
-     * @param bool|null $useStampForApproveOnly
-     * @return Signer
-*/
+     */
     public function setUseStampForApproveOnly(?bool $useStampForApproveOnly): self
     {
         $this->useStampForApproveOnly = $useStampForApproveOnly;
@@ -585,8 +571,6 @@ final class Signer
 
     /**
      * @param SignerAttachment[] $attachments
-     *
-     * @return Signer
      */
     public function setAttachments(array $attachments): self
     {
@@ -641,8 +625,6 @@ final class Signer
 
     /**
      * @param InlineDocumentSignerIntegrationData[] $integrations
-     *
-     * @return Signer
      */
     public function setIntegrations(array $integrations): self
     {
@@ -661,9 +643,7 @@ final class Signer
 
     /**
      * Require the signer to enter this password before signing a document. This field is write only.
-     * @param string $password
-     * @return Signer
-*/
+     */
     public function setPassword(string $password): self
     {
         $this->password = $password;

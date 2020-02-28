@@ -11,37 +11,37 @@ final class WebhookSubscription
     /**
      * @var string
      */
-    protected string $url;
+    protected $url;
     /**
      * @var string
      */
-    protected string $uuid;
+    protected $uuid;
     /**
      * Optional name to easily identify what webhook is used for.
      *
      * @var string|null
      */
-    protected ?string $name;
+    protected $name;
     /**
      * @var string
      */
-    protected string $eventType;
+    protected $eventType;
     /**
      * @var string
      */
-    protected string $callbackUrl;
+    protected $callbackUrl;
     /**
      * @var string|null
      */
-    protected ?string $integration;
+    protected $integration;
     /**
      * @var WebhookSubscriptionTeam
      */
-    protected WebhookSubscriptionTeam $team;
+    protected $team;
     /**
      * @var DateTime
      */
-    protected DateTime $created;
+    protected $created;
 
     public function getUrl(): string
     {
@@ -77,10 +77,6 @@ final class WebhookSubscription
 
     /**
      * Optional name to easily identify what webhook is used for.
-     *
-     * @param string|null $name
-     *
-     * @return WebhookSubscription
      */
     public function setName(?string $name): self
     {

@@ -4,17 +4,11 @@ declare(strict_types=1);
 
 namespace SignRequest\Client\Endpoint;
 
-use Jane\OpenApiRuntime\Client\BaseEndpoint;
-use Jane\OpenApiRuntime\Client\Psr7Endpoint;
-use Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
-use SignRequest\Client\Model\SignRequest;
-use Symfony\Component\Serializer\SerializerInterface;
-
-final class SignrequestsCreate extends BaseEndpoint implements Psr7Endpoint
+final class SignrequestsCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane\OpenApiRuntime\Client\Psr7Endpoint
 {
-    use Psr7EndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7EndpointTrait;
 
-    public function __construct(SignRequest $requestBody)
+    public function __construct(\SignRequest\Client\Model\SignRequest $requestBody)
     {
         $this->body = $requestBody;
     }
@@ -29,9 +23,9 @@ final class SignrequestsCreate extends BaseEndpoint implements Psr7Endpoint
         return '/signrequests/';
     }
 
-    public function getBody(SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
-        if ($this->body instanceof SignRequest) {
+        if ($this->body instanceof \SignRequest\Client\Model\SignRequest) {
             return [['Content-Type' => ['application/json']], $serializer->serialize($this->body, 'json')];
         }
 
@@ -46,7 +40,7 @@ final class SignrequestsCreate extends BaseEndpoint implements Psr7Endpoint
     /**
      * {@inheritdoc}
      */
-    protected function transformResponseBody(string $body, int $status, SerializerInterface $serializer, ?string $contentType = null): ?SignRequest
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null): ?\SignRequest\Client\Model\SignRequest
     {
         if ($status === 201 && mb_strpos($contentType, 'application/json') !== false) {
             return $serializer->deserialize($body, 'SignRequest\\Client\\Model\\SignRequest', 'json');

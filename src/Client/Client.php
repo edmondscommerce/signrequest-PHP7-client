@@ -4,133 +4,62 @@ declare(strict_types=1);
 
 namespace SignRequest\Client;
 
-use Http\Client\Common\Plugin\AddHostPlugin;
-use Http\Client\Common\Plugin\AddPathPlugin;
-use Http\Client\Common\PluginClient;
-use Http\Discovery\Psr17FactoryDiscovery;
-use Http\Discovery\Psr18ClientDiscovery;
-use Jane\OpenApiRuntime\Client\Authentication;
-use Jane\OpenApiRuntime\Client\Psr18Client;
-use Psr\Http\Message\ResponseInterface;
-use SignRequest\Client\Endpoint\ApiTokensList;
-use SignRequest\Client\Endpoint\DocumentAttachmentsCreate;
-use SignRequest\Client\Endpoint\DocumentAttachmentsList;
-use SignRequest\Client\Endpoint\DocumentAttachmentsRead;
-use SignRequest\Client\Endpoint\DocumentsCreate;
-use SignRequest\Client\Endpoint\DocumentsDelete;
-use SignRequest\Client\Endpoint\DocumentsList;
-use SignRequest\Client\Endpoint\DocumentsRead;
-use SignRequest\Client\Endpoint\DocumentsSearchList;
-use SignRequest\Client\Endpoint\EventsList;
-use SignRequest\Client\Endpoint\EventsRead;
-use SignRequest\Client\Endpoint\SignrequestQuickCreateCreate;
-use SignRequest\Client\Endpoint\SignrequestsCancelSignrequest;
-use SignRequest\Client\Endpoint\SignrequestsCreate;
-use SignRequest\Client\Endpoint\SignrequestsList;
-use SignRequest\Client\Endpoint\SignrequestsRead;
-use SignRequest\Client\Endpoint\SignrequestsResendSignrequestEmail;
-use SignRequest\Client\Endpoint\TeamMembersList;
-use SignRequest\Client\Endpoint\TeamMembersRead;
-use SignRequest\Client\Endpoint\TeamsCreate;
-use SignRequest\Client\Endpoint\TeamsDelete;
-use SignRequest\Client\Endpoint\TeamsInviteMember;
-use SignRequest\Client\Endpoint\TeamsList;
-use SignRequest\Client\Endpoint\TeamsPartialUpdate;
-use SignRequest\Client\Endpoint\TeamsRead;
-use SignRequest\Client\Endpoint\TemplatesList;
-use SignRequest\Client\Endpoint\TemplatesRead;
-use SignRequest\Client\Endpoint\WebhooksCreate;
-use SignRequest\Client\Endpoint\WebhooksDelete;
-use SignRequest\Client\Endpoint\WebhooksList;
-use SignRequest\Client\Endpoint\WebhooksPartialUpdate;
-use SignRequest\Client\Endpoint\WebhooksRead;
-use SignRequest\Client\Endpoint\WebhooksUpdate;
-use SignRequest\Client\Model\ApiTokensGetResponse200;
-use SignRequest\Client\Model\Document;
-use SignRequest\Client\Model\DocumentAttachment;
-use SignRequest\Client\Model\DocumentAttachmentsGetResponse200;
-use SignRequest\Client\Model\DocumentsGetResponse200;
-use SignRequest\Client\Model\DocumentsSearchGetResponse200;
-use SignRequest\Client\Model\Event;
-use SignRequest\Client\Model\EventsGetResponse200;
-use SignRequest\Client\Model\InviteMember;
-use SignRequest\Client\Model\SignRequest;
-use SignRequest\Client\Model\SignRequestQuickCreate;
-use SignRequest\Client\Model\SignrequestsGetResponse200;
-use SignRequest\Client\Model\SignrequestsUuidCancelSignrequestPostResponse201;
-use SignRequest\Client\Model\SignrequestsUuidResendSignrequestEmailPostResponse201;
-use SignRequest\Client\Model\Team;
-use SignRequest\Client\Model\TeamMember;
-use SignRequest\Client\Model\TeamMembersGetResponse200;
-use SignRequest\Client\Model\TeamsGetResponse200;
-use SignRequest\Client\Model\Template;
-use SignRequest\Client\Model\TemplatesGetResponse200;
-use SignRequest\Client\Model\WebhooksGetResponse200;
-use SignRequest\Client\Model\WebhookSubscription;
-use SignRequest\Client\Normalizer\JaneObjectNormalizer;
-use Symfony\Component\Serializer\Encoder\JsonDecode;
-use Symfony\Component\Serializer\Encoder\JsonEncode;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Serializer;
-
-final class Client extends Psr18Client
+final class Client extends \Jane\OpenApiRuntime\Client\Psr18Client
 {
     /**
      * @param array $queryParameters {
      *
-     *     @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return ApiTokensGetResponse200|ResponseInterface|null
-     *@var int $page a page number within the paginated result set
+     *     @var int $page a page number within the paginated result set
      *     @var int $limit Number of results to return per page.
      * }
      *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \SignRequest\Client\Model\ApiTokensGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function apiTokensList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new ApiTokensList($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\ApiTokensList($queryParameters), $fetch);
     }
 
     /**
      * @param array $queryParameters {
      *
-     *     @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return DocumentAttachmentsGetResponse200|ResponseInterface|null
-     *@var string $created
+     *     @var string $document__uuid
+     *     @var string $document__external_id
+     *     @var string $created
      *     @var int $page a page number within the paginated result set
      *     @var int $limit Number of results to return per page.
      * }
      *
-     * @var string $document__uuid
-     *     @var string $document__external_id
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \SignRequest\Client\Model\DocumentAttachmentsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function documentAttachmentsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new DocumentAttachmentsList($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\DocumentAttachmentsList($queryParameters), $fetch);
     }
 
     /**
-     * @param DocumentAttachment $requestBody
+     * @param \SignRequest\Client\Model\DocumentAttachment $requestBody
      * @param string                                       $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return DocumentAttachment|ResponseInterface|null
+     * @return \SignRequest\Client\Model\DocumentAttachment|\Psr\Http\Message\ResponseInterface|null
      */
     public function documentAttachmentsCreate(Model\DocumentAttachment $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new DocumentAttachmentsCreate($requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\DocumentAttachmentsCreate($requestBody), $fetch);
     }
 
     /**
-     * @param string $uuid
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return DocumentAttachment|ResponseInterface|null
+     * @return \SignRequest\Client\Model\DocumentAttachment|\Psr\Http\Message\ResponseInterface|null
      */
     public function documentAttachmentsRead(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new DocumentAttachmentsRead($uuid), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\DocumentAttachmentsRead($uuid), $fetch);
     }
 
     /**
@@ -182,10 +111,7 @@ final class Client extends Psr18Client
      *
      * @param array $queryParameters {
      *
-     *     @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return DocumentsSearchGetResponse200|ResponseInterface|null
-     *@var int $page a page number within the paginated result set
+     *     @var int $page a page number within the paginated result set
      *     @var int $limit number of results to return per page
      *     @var string $q Normal search query
      *     @var string $autocomplete Partial search query
@@ -198,19 +124,19 @@ final class Client extends Psr18Client
      *     @var float $signer_data Set to `1` to export with each signer on a separate row
      * }
      *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \SignRequest\Client\Model\DocumentsSearchGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function documentsSearchList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new DocumentsSearchList($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\DocumentsSearchList($queryParameters), $fetch);
     }
 
     /**
      * @param array $queryParameters {
      *
-     *     @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return DocumentsGetResponse200|ResponseInterface|null
-     *@var string $external_id
+     *     @var string $external_id
      *     @var string $signrequest__who
      *     @var string $signrequest__from_email
      *     @var string $status
@@ -223,52 +149,48 @@ final class Client extends Psr18Client
      *     @var int $limit Number of results to return per page.
      * }
      *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \SignRequest\Client\Model\DocumentsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function documentsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new DocumentsList($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\DocumentsList($queryParameters), $fetch);
     }
 
     /**
-     * @param Document $requestBody
+     * @param \SignRequest\Client\Model\Document $requestBody
      * @param string                             $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Document|ResponseInterface|null
+     * @return \SignRequest\Client\Model\Document|\Psr\Http\Message\ResponseInterface|null
      */
     public function documentsCreate(Model\Document $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new DocumentsCreate($requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\DocumentsCreate($requestBody), $fetch);
     }
 
     /**
-     * @param string $uuid
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return ResponseInterface|null
      */
-    public function documentsDelete(string $uuid, string $fetch = self::FETCH_OBJECT): ?ResponseInterface
+    public function documentsDelete(string $uuid, string $fetch = self::FETCH_OBJECT): ?\Psr\Http\Message\ResponseInterface
     {
-        return $this->executePsr7Endpoint(new DocumentsDelete($uuid), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\DocumentsDelete($uuid), $fetch);
     }
 
     /**
-     * @param string $uuid
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Document|ResponseInterface|null
+     * @return \SignRequest\Client\Model\Document|\Psr\Http\Message\ResponseInterface|null
      */
     public function documentsRead(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new DocumentsRead($uuid), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\DocumentsRead($uuid), $fetch);
     }
 
     /**
      * @param array $queryParameters {
      *
-     *     @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return EventsGetResponse200|ResponseInterface|null
-     *@var string $document__uuid
+     *     @var string $document__uuid
      *     @var string $document__external_id
      *     @var string $document__signrequest__who
      *     @var string $document__signrequest__from_email
@@ -285,103 +207,100 @@ final class Client extends Psr18Client
      *     @var int $limit Number of results to return per page.
      * }
      *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \SignRequest\Client\Model\EventsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function eventsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new EventsList($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\EventsList($queryParameters), $fetch);
     }
 
     /**
      * @param int    $id    a unique integer value identifying this event
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Event|ResponseInterface|null
+     * @return \SignRequest\Client\Model\Event|\Psr\Http\Message\ResponseInterface|null
      */
     public function eventsRead(int $id, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new EventsRead($id), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\EventsRead($id), $fetch);
     }
 
     /**
-     * @param SignRequestQuickCreate $requestBody
+     * @param \SignRequest\Client\Model\SignRequestQuickCreate $requestBody
      * @param string                                           $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return SignRequestQuickCreate|ResponseInterface|null
+     * @return \SignRequest\Client\Model\SignRequestQuickCreate|\Psr\Http\Message\ResponseInterface|null
      */
     public function signrequestQuickCreateCreate(Model\SignRequestQuickCreate $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new SignrequestQuickCreateCreate($requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\SignrequestQuickCreateCreate($requestBody), $fetch);
     }
 
     /**
      * @param array $queryParameters {
      *
-     *     @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return SignrequestsGetResponse200|ResponseInterface|null
-     *@var int $page a page number within the paginated result set
+     *     @var string $who
+     *     @var string $from_email
+     *     @var int $page a page number within the paginated result set
      *     @var int $limit Number of results to return per page.
      * }
      *
-     * @var string $who
-     *     @var string $from_email
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \SignRequest\Client\Model\SignrequestsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function signrequestsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new SignrequestsList($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\SignrequestsList($queryParameters), $fetch);
     }
 
     /**
-     * @param SignRequest $requestBody
+     * @param \SignRequest\Client\Model\SignRequest $requestBody
      * @param string                                $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return SignRequest|ResponseInterface|null
+     * @return \SignRequest\Client\Model\SignRequest|\Psr\Http\Message\ResponseInterface|null
      */
     public function signrequestsCreate(Model\SignRequest $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new SignrequestsCreate($requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\SignrequestsCreate($requestBody), $fetch);
     }
 
     /**
-     * @param string $uuid
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return SignRequest|ResponseInterface|null
+     * @return \SignRequest\Client\Model\SignRequest|\Psr\Http\Message\ResponseInterface|null
      */
     public function signrequestsRead(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new SignrequestsRead($uuid), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\SignrequestsRead($uuid), $fetch);
     }
 
     /**
-     * @param string $uuid
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return SignrequestsUuidCancelSignrequestPostResponse201|ResponseInterface|null
+     * @return \SignRequest\Client\Model\SignrequestsUuidCancelSignrequestPostResponse201|\Psr\Http\Message\ResponseInterface|null
      */
     public function signrequestsCancelSignrequest(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new SignrequestsCancelSignrequest($uuid), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\SignrequestsCancelSignrequest($uuid), $fetch);
     }
 
     /**
-     * @param string $uuid
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return SignrequestsUuidResendSignrequestEmailPostResponse201|ResponseInterface|null
+     * @return \SignRequest\Client\Model\SignrequestsUuidResendSignrequestEmailPostResponse201|\Psr\Http\Message\ResponseInterface|null
      */
     public function signrequestsResendSignrequestEmail(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new SignrequestsResendSignrequestEmail($uuid), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\SignrequestsResendSignrequestEmail($uuid), $fetch);
     }
 
     /**
      * @param array $queryParameters {
      *
-     *     @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return TeamMembersGetResponse200|ResponseInterface|null
-     *@var string $is_active
+     *     @var string $is_active
      *     @var string $is_owner
      *     @var string $is_admin
      *     @var string $user__email
@@ -391,21 +310,23 @@ final class Client extends Psr18Client
      *     @var int $limit Number of results to return per page.
      * }
      *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \SignRequest\Client\Model\TeamMembersGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function teamMembersList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new TeamMembersList($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\TeamMembersList($queryParameters), $fetch);
     }
 
     /**
-     * @param string $uuid
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return TeamMember|ResponseInterface|null
+     * @return \SignRequest\Client\Model\TeamMember|\Psr\Http\Message\ResponseInterface|null
      */
     public function teamMembersRead(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new TeamMembersRead($uuid), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\TeamMembersRead($uuid), $fetch);
     }
 
     /**
@@ -421,17 +342,17 @@ final class Client extends Psr18Client
      *
      * @param array $queryParameters {
      *
-     *     @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return TeamsGetResponse200|ResponseInterface|null
-     *@var int $page a page number within the paginated result set
+     *     @var int $page a page number within the paginated result set
      *     @var int $limit Number of results to return per page.
      * }
      *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \SignRequest\Client\Model\TeamsGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function teamsList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new TeamsList($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\TeamsList($queryParameters), $fetch);
     }
 
     /**
@@ -445,14 +366,14 @@ final class Client extends Psr18Client
      * {"email":"**email-of-member-to-invite@example.com**","is_admin":false,"is_owner":false} to:
      *https://signrequest.com/api/v1/teams/{{ subdomain }}/invite_member/*
      *
-     * @param Team $requestBody
+     * @param \SignRequest\Client\Model\Team $requestBody
      * @param string                         $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Team|ResponseInterface|null
+     * @return \SignRequest\Client\Model\Team|\Psr\Http\Message\ResponseInterface|null
      */
     public function teamsCreate(Model\Team $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new TeamsCreate($requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\TeamsCreate($requestBody), $fetch);
     }
 
     /**
@@ -466,14 +387,11 @@ final class Client extends Psr18Client
      * {"email":"**email-of-member-to-invite@example.com**","is_admin":false,"is_owner":false} to:
      *https://signrequest.com/api/v1/teams/{{ subdomain }}/invite_member/*
      *
-     * @param string $subdomain
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return ResponseInterface|null
      */
-    public function teamsDelete(string $subdomain, string $fetch = self::FETCH_OBJECT): ?ResponseInterface
+    public function teamsDelete(string $subdomain, string $fetch = self::FETCH_OBJECT): ?\Psr\Http\Message\ResponseInterface
     {
-        return $this->executePsr7Endpoint(new TeamsDelete($subdomain), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\TeamsDelete($subdomain), $fetch);
     }
 
     /**
@@ -487,14 +405,13 @@ final class Client extends Psr18Client
      * {"email":"**email-of-member-to-invite@example.com**","is_admin":false,"is_owner":false} to:
      *https://signrequest.com/api/v1/teams/{{ subdomain }}/invite_member/*
      *
-     * @param string $subdomain
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Team|ResponseInterface|null
+     * @return \SignRequest\Client\Model\Team|\Psr\Http\Message\ResponseInterface|null
      */
     public function teamsRead(string $subdomain, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new TeamsRead($subdomain), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\TeamsRead($subdomain), $fetch);
     }
 
     /**
@@ -508,15 +425,14 @@ final class Client extends Psr18Client
      * {"email":"**email-of-member-to-invite@example.com**","is_admin":false,"is_owner":false} to:
      *https://signrequest.com/api/v1/teams/{{ subdomain }}/invite_member/*
      *
-     * @param string $subdomain
-     * @param Team   $requestBody
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \SignRequest\Client\Model\Team $requestBody
+     * @param string                         $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Team|ResponseInterface|null
+     * @return \SignRequest\Client\Model\Team|\Psr\Http\Message\ResponseInterface|null
      */
     public function teamsPartialUpdate(string $subdomain, Model\Team $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new TeamsPartialUpdate($subdomain, $requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\TeamsPartialUpdate($subdomain, $requestBody), $fetch);
     }
 
     /**
@@ -530,133 +446,125 @@ final class Client extends Psr18Client
      * {"email":"**email-of-member-to-invite@example.com**","is_admin":false,"is_owner":false} to:
      *https://signrequest.com/api/v1/teams/{{ subdomain }}/invite_member/*
      *
-     * @param string       $subdomain
-     * @param InviteMember $requestBody
-     * @param string       $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \SignRequest\Client\Model\InviteMember $requestBody
+     * @param string                                 $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return InviteMember|ResponseInterface|null
+     * @return \SignRequest\Client\Model\InviteMember|\Psr\Http\Message\ResponseInterface|null
      */
     public function teamsInviteMember(string $subdomain, Model\InviteMember $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new TeamsInviteMember($subdomain, $requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\TeamsInviteMember($subdomain, $requestBody), $fetch);
     }
 
     /**
      * @param array $queryParameters {
      *
-     *     @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return TemplatesGetResponse200|ResponseInterface|null
-     *@var int $page a page number within the paginated result set
+     *     @var int $page a page number within the paginated result set
      *     @var int $limit Number of results to return per page.
      * }
      *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \SignRequest\Client\Model\TemplatesGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function templatesList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new TemplatesList($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\TemplatesList($queryParameters), $fetch);
     }
 
     /**
-     * @param string $uuid
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return Template|ResponseInterface|null
+     * @return \SignRequest\Client\Model\Template|\Psr\Http\Message\ResponseInterface|null
      */
     public function templatesRead(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new TemplatesRead($uuid), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\TemplatesRead($uuid), $fetch);
     }
 
     /**
      * @param array $queryParameters {
      *
-     *     @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return WebhooksGetResponse200|ResponseInterface|null
-     *@var int $page a page number within the paginated result set
+     *     @var int $page a page number within the paginated result set
      *     @var int $limit Number of results to return per page.
      * }
      *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \SignRequest\Client\Model\WebhooksGetResponse200|\Psr\Http\Message\ResponseInterface|null
      */
     public function webhooksList(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new WebhooksList($queryParameters), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\WebhooksList($queryParameters), $fetch);
     }
 
     /**
-     * @param WebhookSubscription $requestBody
+     * @param \SignRequest\Client\Model\WebhookSubscription $requestBody
      * @param string                                        $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return WebhookSubscription|ResponseInterface|null
+     * @return \SignRequest\Client\Model\WebhookSubscription|\Psr\Http\Message\ResponseInterface|null
      */
     public function webhooksCreate(Model\WebhookSubscription $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new WebhooksCreate($requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\WebhooksCreate($requestBody), $fetch);
     }
 
     /**
-     * @param string $uuid
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     *
-     * @return ResponseInterface|null
      */
-    public function webhooksDelete(string $uuid, string $fetch = self::FETCH_OBJECT): ?ResponseInterface
+    public function webhooksDelete(string $uuid, string $fetch = self::FETCH_OBJECT): ?\Psr\Http\Message\ResponseInterface
     {
-        return $this->executePsr7Endpoint(new WebhooksDelete($uuid), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\WebhooksDelete($uuid), $fetch);
     }
 
     /**
-     * @param string $uuid
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return WebhookSubscription|ResponseInterface|null
+     * @return \SignRequest\Client\Model\WebhookSubscription|\Psr\Http\Message\ResponseInterface|null
      */
     public function webhooksRead(string $uuid, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new WebhooksRead($uuid), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\WebhooksRead($uuid), $fetch);
     }
 
     /**
-     * @param string              $uuid
-     * @param WebhookSubscription $requestBody
-     * @param string              $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \SignRequest\Client\Model\WebhookSubscription $requestBody
+     * @param string                                        $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return WebhookSubscription|ResponseInterface|null
+     * @return \SignRequest\Client\Model\WebhookSubscription|\Psr\Http\Message\ResponseInterface|null
      */
     public function webhooksPartialUpdate(string $uuid, Model\WebhookSubscription $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new WebhooksPartialUpdate($uuid, $requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\WebhooksPartialUpdate($uuid, $requestBody), $fetch);
     }
 
     /**
-     * @param string              $uuid
-     * @param WebhookSubscription $requestBody
-     * @param string              $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @param \SignRequest\Client\Model\WebhookSubscription $requestBody
+     * @param string                                        $fetch       Fetch mode to use (can be OBJECT or RESPONSE)
      *
-     * @return WebhookSubscription|ResponseInterface|null
+     * @return \SignRequest\Client\Model\WebhookSubscription|\Psr\Http\Message\ResponseInterface|null
      */
     public function webhooksUpdate(string $uuid, Model\WebhookSubscription $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executePsr7Endpoint(new WebhooksUpdate($uuid, $requestBody), $fetch);
+        return $this->executePsr7Endpoint(new \SignRequest\Client\Endpoint\WebhooksUpdate($uuid, $requestBody), $fetch);
     }
 
-    public static function create($httpClient = null, Authentication $authentication = null): Client
+    public static function create($httpClient = null, \Jane\OpenApiRuntime\Client\Authentication $authentication = null)
     {
         if ($httpClient === null) {
-            $httpClient = Psr18ClientDiscovery::find();
+            $httpClient = \Http\Discovery\Psr18ClientDiscovery::find();
             $plugins    = [];
-            $uri        = Psr17FactoryDiscovery::findUrlFactory()->createUri('https://signrequest.com/api/v1');
-            $plugins[]  = new AddHostPlugin($uri);
-            $plugins[]  = new AddPathPlugin($uri);
+            $uri        = \Http\Discovery\Psr17FactoryDiscovery::findUrlFactory()->createUri('https://signrequest.com/api/v1');
+            $plugins[]  = new \Http\Client\Common\Plugin\AddHostPlugin($uri);
+            $plugins[]  = new \Http\Client\Common\Plugin\AddPathPlugin($uri);
             if ($authentication !== null) {
                 $plugins[] = $authentication->getPlugin();
             }
-            $httpClient = new PluginClient($httpClient, $plugins);
+            $httpClient = new \Http\Client\Common\PluginClient($httpClient, $plugins);
         }
-        $requestFactory = Psr17FactoryDiscovery::findRequestFactory();
-        $streamFactory  = Psr17FactoryDiscovery::findStreamFactory();
-        $serializer     = new Serializer([new ArrayDenormalizer(), new JaneObjectNormalizer()], [new JsonEncoder(new JsonEncode(), new JsonDecode())]);
+        $requestFactory = \Http\Discovery\Psr17FactoryDiscovery::findRequestFactory();
+        $streamFactory  = \Http\Discovery\Psr17FactoryDiscovery::findStreamFactory();
+        $serializer     = new \Symfony\Component\Serializer\Serializer([new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), new \SignRequest\Client\Normalizer\JaneObjectNormalizer()], [new \Symfony\Component\Serializer\Encoder\JsonEncoder(new \Symfony\Component\Serializer\Encoder\JsonEncode(), new \Symfony\Component\Serializer\Encoder\JsonDecode())]);
 
         return new static($httpClient, $requestFactory, $serializer, $streamFactory);
     }

@@ -9,11 +9,11 @@ final class RequiredAttachment
     /**
      * @var string
      */
-    protected string $name;
+    protected $name;
     /**
      * @var string
      */
-    protected string $uuid;
+    protected $uuid;
 
     public function getName(): string
     {

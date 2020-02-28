@@ -11,13 +11,13 @@ final class SigningLog
      *
      * @var string|null
      */
-    protected ?string $pdf;
+    protected $pdf;
     /**
      * SHA256 hash of PDF contents.
      *
      * @var string
      */
-    protected string $securityHash;
+    protected $securityHash;
 
     /**
      * Temporary URL to signing log, expires in five minutes.
@@ -29,10 +29,6 @@ final class SigningLog
 
     /**
      * Temporary URL to signing log, expires in five minutes.
-     *
-     * @param string|null $pdf
-     *
-     * @return SigningLog
      */
     public function setPdf(?string $pdf): self
     {
@@ -51,9 +47,7 @@ final class SigningLog
 
     /**
      * SHA256 hash of PDF contents.
-     * @param string $securityHash
-     * @return SigningLog
-*/
+     */
     public function setSecurityHash(string $securityHash): self
     {
         $this->securityHash = $securityHash;

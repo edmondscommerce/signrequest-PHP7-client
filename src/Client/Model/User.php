@@ -9,19 +9,19 @@ final class User
     /**
      * @var string
      */
-    protected string $email;
+    protected $email;
     /**
      * @var string
      */
-    protected string $firstName;
+    protected $firstName;
     /**
      * @var string
      */
-    protected string $lastName;
+    protected $lastName;
     /**
      * @var string
      */
-    protected string $displayName;
+    protected $displayName;
 
     public function getEmail(): string
     {

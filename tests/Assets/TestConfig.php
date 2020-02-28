@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace SignRequest\Tests\Assets;
 
@@ -7,7 +9,7 @@ use SignRequest\Config\Config;
 use SignRequest\Config\ConfigFactory;
 use function array_merge;
 
-class TestConfig
+final class TestConfig
 {
     public const KEY_SIGNER_1_EMAIL = 'signer1_email';
     public const KEY_SIGNER_2_EMAIL = 'signer2_email';
@@ -21,11 +23,6 @@ class TestConfig
     private Signer $testSigner1;
     private Signer $testSigner2;
 
-    /**
-     * @param Config $config
-     * @param Signer $testSigner1
-     * @param Signer $testSigner2
-     */
     public function __construct(Config $config, Signer $testSigner1, Signer $testSigner2)
     {
         $this->config      = $config;
@@ -35,13 +32,12 @@ class TestConfig
 
     public static function instance(): self
     {
-        if (false === (self::$instance instanceof self)) {
+        if ((self::$instance instanceof self) === false) {
             self::$instance = self::createFromServer();
         }
 
         return self::$instance;
     }
-
 
     public static function createFromServer(): self
     {
@@ -53,6 +49,20 @@ class TestConfig
         return new self($config, $signer1, $signer2);
     }
 
+    public function getConfig(): Config
+    {
+        return $this->config;
+    }
+
+    public function getTestSigner1(): Signer
+    {
+        return $this->testSigner1;
+    }
+
+    public function getTestSigner2(): Signer
+    {
+        return $this->testSigner2;
+    }
 
     private static function createSigner(string $emailAddress): Signer
     {
@@ -60,29 +70,5 @@ class TestConfig
         $signer->setEmail($emailAddress);
 
         return $signer;
-    }
-
-    /**
-     * @return Config
-     */
-    public function getConfig(): Config
-    {
-        return $this->config;
-    }
-
-    /**
-     * @return Signer
-     */
-    public function getTestSigner1(): Signer
-    {
-        return $this->testSigner1;
-    }
-
-    /**
-     * @return Signer
-     */
-    public function getTestSigner2(): Signer
-    {
-        return $this->testSigner2;
     }
 }

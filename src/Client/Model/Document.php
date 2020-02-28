@@ -11,163 +11,163 @@ final class Document
     /**
      * @var string
      */
-    protected string $url;
+    protected $url;
     /**
      * @var DocumentTeam
      */
-    protected DocumentTeam $team;
+    protected $team;
     /**
      * @var string
      */
-    protected string $uuid;
+    protected $uuid;
     /**
      * @var User
      */
-    protected User $user;
+    protected $user;
     /**
      * Temporary URL to original file as PDF, expires in five minutes.
      *
      * @var string
      */
-    protected string $fileAsPdf;
+    protected $fileAsPdf;
     /**
      * Defaults to filename, including extension.
      *
      * @var string|null
      */
-    protected ?string $name;
+    protected $name;
     /**
      * ID used to reference document in external system.
      *
      * @var string|null
      */
-    protected ?string $externalId;
+    protected $externalId;
     /**
      * Shared secret used in conjunction with <a href="#section/Frontend-API/SignRequest-js-client-(beta)">SignRequest-js client</a> to grant user access to a document that's not a member of the document's team.
      *
      * @var string|null
      */
-    protected ?string $frontendId;
+    protected $frontendId;
     /**
      * Temporary URL to original file, expires in five minutes.
      *
      * @var string|null
      */
-    protected ?string $file;
+    protected $file;
     /**
      * Publicly accessible URL of document to be downloaded by SignRequest.
      *
      * @var string|null
      */
-    protected ?string $fileFromUrl;
+    protected $fileFromUrl;
     /**
      * URL at which to receive [event callbacks](#section/Events/Events-callback) for this document.
      *
      * @var string|null
      */
-    protected ?string $eventsCallbackUrl;
+    protected $eventsCallbackUrl;
     /**
      * Base64 encoded document content.
      *
      * @var string|null
      */
-    protected ?string $fileFromContent;
+    protected $fileFromContent;
     /**
      * Filename, including extension. Required when using `file_from_content`.
      *
      * @var string|null
      */
-    protected ?string $fileFromContentName;
+    protected $fileFromContentName;
     /**
      * @var string|null
      */
-    protected ?string $template;
+    protected $template;
     /**
      * Prefill signer input data, see [prefill tags](#section/Preparing-a-document/Prefill-tags-templates).
      *
      * @var InlinePrefillTags[]
      */
-    protected array $prefillTags;
+    protected $prefillTags;
     /**
      * @var InlineIntegrationData[]
      */
-    protected array $integrations;
+    protected $integrations;
     /**
      * @var FileFromSf
      */
-    protected FileFromSf $fileFromSf;
+    protected $fileFromSf;
     /**
      * Number of days after which a finished document (signed/cancelled/declined) will be automatically deleted.
      *
      * @var int|null
      */
-    protected ?int $autoDeleteDays;
+    protected $autoDeleteDays;
     /**
      * Number of days after which a non finished document will be automatically expired.
      *
      * @var int|null
      */
-    protected ?int $autoExpireDays;
+    protected $autoExpireDays;
     /**
      * Temporary URL to signed document as PDF, expires in five minutes.
      *
      * @var string
      */
-    protected string $pdf;
+    protected $pdf;
     /**
      * `co`: converting, `ne`: new, `se`: sent, `vi`: viewed, `si`: signed, `do`: downloaded, `sd`: signed and downloaded, `ca`: cancelled, `de`: declined, `ec`: error converting, `es`: error sending, `xp`: expired.
      *
      * @var string
      */
-    protected string $status;
+    protected $status;
     /**
      * @var DocumentSignrequest
      */
-    protected DocumentSignrequest $signrequest;
+    protected $signrequest;
     /**
      * Indicates whether document was created using the API.
      *
      * @var bool
      */
-    protected bool $apiUsed;
+    protected $apiUsed;
     /**
      * @var DocumentSigningLog
      */
-    protected DocumentSigningLog $signingLog;
+    protected $signingLog;
     /**
      * SHA256 hash of PDF contents.
      *
      * @var string
      */
-    protected string $securityHash;
+    protected $securityHash;
     /**
      * @var DocumentAttachment[]
      */
-    protected array $attachments;
+    protected $attachments;
     /**
      * Date and time calculated using `auto_delete_days` after which a finished document (signed/cancelled/declined) will be automatically deleted.
      *
      * @var DateTime
      */
-    protected DateTime $autoDeleteAfter;
+    protected $autoDeleteAfter;
     /**
      * Indicates whether document was created as part of a sandbox team.
      *
      * @var bool|null
      */
-    protected ?bool $sandbox;
+    protected $sandbox;
     /**
      * Date and time calculated using `auto_expire_days` after which a non finished document will be automatically expired.
      *
      * @var DateTime
      */
-    protected DateTime $autoExpireAfter;
+    protected $autoExpireAfter;
     /**
      * Indicates whether a change to the document is processing and the PDF may be out of date. It is recommended to wait until processing has finished before downloading the PDF. Webhooks are not sent until processing has been completed.
      *
      * @var bool
      */
-    protected bool $processing;
+    protected $processing;
 
     public function getUrl(): string
     {
@@ -227,10 +227,6 @@ final class Document
 
     /**
      * Temporary URL to original file as PDF, expires in five minutes.
-     *
-     * @param string $fileAsPdf
-     *
-     * @return Document
      */
     public function setFileAsPdf(string $fileAsPdf): self
     {
@@ -249,9 +245,7 @@ final class Document
 
     /**
      * Defaults to filename, including extension.
-     * @param string|null $name
-     * @return Document
-*/
+     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -269,9 +263,7 @@ final class Document
 
     /**
      * ID used to reference document in external system.
-     * @param string|null $externalId
-     * @return Document
-*/
+     */
     public function setExternalId(?string $externalId): self
     {
         $this->externalId = $externalId;
@@ -289,9 +281,7 @@ final class Document
 
     /**
      * Shared secret used in conjunction with <a href="#section/Frontend-API/SignRequest-js-client-(beta)">SignRequest-js client</a> to grant user access to a document that's not a member of the document's team.
-     * @param string|null $frontendId
-     * @return Document
-*/
+     */
     public function setFrontendId(?string $frontendId): self
     {
         $this->frontendId = $frontendId;
@@ -309,9 +299,7 @@ final class Document
 
     /**
      * Temporary URL to original file, expires in five minutes.
-     * @param string|null $file
-     * @return Document
-*/
+     */
     public function setFile(?string $file): self
     {
         $this->file = $file;
@@ -329,9 +317,7 @@ final class Document
 
     /**
      * Publicly accessible URL of document to be downloaded by SignRequest.
-     * @param string|null $fileFromUrl
-     * @return Document
-*/
+     */
     public function setFileFromUrl(?string $fileFromUrl): self
     {
         $this->fileFromUrl = $fileFromUrl;
@@ -349,9 +335,7 @@ final class Document
 
     /**
      * URL at which to receive [event callbacks](#section/Events/Events-callback) for this document.
-     * @param string|null $eventsCallbackUrl
-     * @return Document
-*/
+     */
     public function setEventsCallbackUrl(?string $eventsCallbackUrl): self
     {
         $this->eventsCallbackUrl = $eventsCallbackUrl;
@@ -369,9 +353,7 @@ final class Document
 
     /**
      * Base64 encoded document content.
-     * @param string|null $fileFromContent
-     * @return Document
-*/
+     */
     public function setFileFromContent(?string $fileFromContent): self
     {
         $this->fileFromContent = $fileFromContent;
@@ -389,9 +371,7 @@ final class Document
 
     /**
      * Filename, including extension. Required when using `file_from_content`.
-     * @param string|null $fileFromContentName
-     * @return Document
-*/
+     */
     public function setFileFromContentName(?string $fileFromContentName): self
     {
         $this->fileFromContentName = $fileFromContentName;
@@ -425,8 +405,6 @@ final class Document
      * Prefill signer input data, see [prefill tags](#section/Preparing-a-document/Prefill-tags-templates).
      *
      * @param InlinePrefillTags[] $prefillTags
-     *
-     * @return Document
      */
     public function setPrefillTags(array $prefillTags): self
     {
@@ -445,8 +423,6 @@ final class Document
 
     /**
      * @param InlineIntegrationData[] $integrations
-     *
-     * @return Document
      */
     public function setIntegrations(array $integrations): self
     {
@@ -477,9 +453,7 @@ final class Document
 
     /**
      * Number of days after which a finished document (signed/cancelled/declined) will be automatically deleted.
-     * @param int|null $autoDeleteDays
-     * @return Document
-*/
+     */
     public function setAutoDeleteDays(?int $autoDeleteDays): self
     {
         $this->autoDeleteDays = $autoDeleteDays;
@@ -497,9 +471,7 @@ final class Document
 
     /**
      * Number of days after which a non finished document will be automatically expired.
-     * @param int|null $autoExpireDays
-     * @return Document
-*/
+     */
     public function setAutoExpireDays(?int $autoExpireDays): self
     {
         $this->autoExpireDays = $autoExpireDays;
@@ -517,9 +489,7 @@ final class Document
 
     /**
      * Temporary URL to signed document as PDF, expires in five minutes.
-     * @param string $pdf
-     * @return Document
-*/
+     */
     public function setPdf(string $pdf): self
     {
         $this->pdf = $pdf;
@@ -537,9 +507,7 @@ final class Document
 
     /**
      * `co`: converting, `ne`: new, `se`: sent, `vi`: viewed, `si`: signed, `do`: downloaded, `sd`: signed and downloaded, `ca`: cancelled, `de`: declined, `ec`: error converting, `es`: error sending, `xp`: expired.
-     * @param string $status
-     * @return Document
-*/
+     */
     public function setStatus(string $status): self
     {
         $this->status = $status;
@@ -569,9 +537,7 @@ final class Document
 
     /**
      * Indicates whether document was created using the API.
-     * @param bool $apiUsed
-     * @return Document
-*/
+     */
     public function setApiUsed(bool $apiUsed): self
     {
         $this->apiUsed = $apiUsed;
@@ -601,9 +567,7 @@ final class Document
 
     /**
      * SHA256 hash of PDF contents.
-     * @param string $securityHash
-     * @return Document
-*/
+     */
     public function setSecurityHash(string $securityHash): self
     {
         $this->securityHash = $securityHash;
@@ -621,8 +585,6 @@ final class Document
 
     /**
      * @param DocumentAttachment[] $attachments
-     *
-     * @return Document
      */
     public function setAttachments(array $attachments): self
     {
@@ -641,9 +603,7 @@ final class Document
 
     /**
      * Date and time calculated using `auto_delete_days` after which a finished document (signed/cancelled/declined) will be automatically deleted.
-     * @param DateTime $autoDeleteAfter
-     * @return Document
-*/
+     */
     public function setAutoDeleteAfter(DateTime $autoDeleteAfter): self
     {
         $this->autoDeleteAfter = $autoDeleteAfter;
@@ -661,9 +621,7 @@ final class Document
 
     /**
      * Indicates whether document was created as part of a sandbox team.
-     * @param bool|null $sandbox
-     * @return Document
-*/
+     */
     public function setSandbox(?bool $sandbox): self
     {
         $this->sandbox = $sandbox;
@@ -681,9 +639,7 @@ final class Document
 
     /**
      * Date and time calculated using `auto_expire_days` after which a non finished document will be automatically expired.
-     * @param DateTime $autoExpireAfter
-     * @return Document
-*/
+     */
     public function setAutoExpireAfter(DateTime $autoExpireAfter): self
     {
         $this->autoExpireAfter = $autoExpireAfter;
@@ -701,9 +657,7 @@ final class Document
 
     /**
      * Indicates whether a change to the document is processing and the PDF may be out of date. It is recommended to wait until processing has finished before downloading the PDF. Webhooks are not sent until processing has been completed.
-     * @param bool $processing
-     * @return Document
-*/
+     */
     public function setProcessing(bool $processing): self
     {
         $this->processing = $processing;

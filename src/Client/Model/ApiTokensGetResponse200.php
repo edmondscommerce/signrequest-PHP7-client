@@ -9,19 +9,19 @@ final class ApiTokensGetResponse200
     /**
      * @var int
      */
-    protected int $count;
+    protected $count;
     /**
      * @var string|null
      */
-    protected ?string $next;
+    protected $next;
     /**
      * @var string|null
      */
-    protected ?string $previous;
+    protected $previous;
     /**
      * @var AuthToken[]
      */
-    protected array $results;
+    protected $results;
 
     public function getCount(): int
     {
@@ -69,8 +69,6 @@ final class ApiTokensGetResponse200
 
     /**
      * @param AuthToken[] $results
-     *
-     * @return ApiTokensGetResponse200
      */
     public function setResults(array $results): self
     {
