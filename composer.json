@@ -16,7 +16,8 @@
     "roave/security-advisories": "dev-master",
     "edmondscommerce/phpqa": "@stable",
     "phpstan/phpstan-phpunit": "^0.12",
-    "jane-php/open-api-3": "dev-master@dev"
+    "jane-php/open-api-3": "dev-master@dev",
+    "symfony/http-client": "^5.0"
   },
   "autoload": {
     "psr-4": {

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace SignRequest;
 
-
 use SignRequest\Client\Client;
 use SignRequest\Client\Model\SignRequestQuickCreate;
 
@@ -32,6 +31,6 @@ final class QuickCreate
     private function getRequestBody(): SignRequestQuickCreate
     {
         $body = new SignRequestQuickCreate();
-        //$body->setDocument();
+
     }
 }
