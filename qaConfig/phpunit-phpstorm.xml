@@ -1,0 +1,27 @@
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.5/phpunit.xsd"
+        cacheTokens="false"
+        colors="true"
+        verbose="true"
+        timeoutForLargeTests="300"
+        timeoutForMediumTests="5"
+        timeoutForSmallTests="1"
+        failOnRisky="true"
+        cacheResult="false"
+        cacheResultFile="/dev/null/.phpunit.result.cache"
+        executionOrder="depends,random"
+        printerClass="\PHPUnit\Util\TestDox\CliTestDoxPrinter"
+        bootstrap="./../tests/bootstrap.php"
+>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./../src</directory>
+        </whitelist>
+    </filter>
+    <testsuites>
+        <testsuite name="tests">
+            <directory suffix="Test.php">./../tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

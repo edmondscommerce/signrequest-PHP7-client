@@ -3,6 +3,7 @@
 namespace SignRequest\Tests\Assets\Documents;
 
 use SignRequest\Client\Model\Document;
+use SignRequest\Client\Model\SignRequestQuickCreate;
 use function base64_encode;
 use function file_get_contents;
 
@@ -24,5 +25,15 @@ class HasTagsDocumentFactory implements DocumentFactoryInterface
     private function getContent(): string
     {
         return base64_encode(file_get_contents(self::HTML_TEMPLATE));
+    }
+
+    public function getQuickCreate(PrefillTagsInterface $tags, string $fromEmail): SignRequestQuickCreate
+    {
+        $quickCreate = new SignRequestQuickCreate();
+        $quickCreate->setFromEmail($fromEmail);
+        $quickCreate->setFileFromContent($this->getContent());
+        $quickCreate->setPrefillTags($tags->getData());
+
+        return $quickCreate;
     }
 }

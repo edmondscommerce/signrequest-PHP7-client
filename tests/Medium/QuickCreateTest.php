@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace SignRequest\Tests\Medium;
 
 use PHPUnit\Framework\TestCase;
-use SignRequest\Client\Client;
+use SignRequest\Client\Model\SignRequestQuickCreate;
 use SignRequest\Tests\Assets\Documents\HasTagsDocumentFactory;
 use SignRequest\Tests\Assets\Documents\HasTagsPrefillTags;
 use SignRequest\Tests\Assets\Documents\PrefillTagData;
+use SignRequest\Tests\Assets\TestClientFactory;
+use SignRequest\Tests\Assets\TestConfig;
 
 /**
  * @internal
@@ -68,8 +70,12 @@ final class QuickCreateTest extends TestCase
             ),
         );
 
-        $document = (new HasTagsDocumentFactory())->getDocument($tags);
+        $config          = TestConfig::instance();
+        $quickCreateData = (new HasTagsDocumentFactory())->getQuickCreate($tags, $config->getTestSigner1()->getEmail());
+        $quickCreateData->setSigners([$config->getTestSigner1(), $config->getTestSigner2()]);
 
-        $client = new Client()
+        $client = TestClientFactory::create();
+        $actual = $client->signrequestQuickCreateCreate($quickCreateData);
+        self::assertInstanceOf(SignRequestQuickCreate::class, $actual);
     }
 }
