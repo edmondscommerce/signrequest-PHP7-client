@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use stdClass;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,11 +30,13 @@ final class SignrequestsGetResponse200Normalizer implements DenormalizerInterfac
     public function denormalize($data, $class, string $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \SignRequest\Client\Model\SignrequestsGetResponse200();
-        if (property_exists($data, 'count')) {
+        if (property_exists($data, 'count') && $data->{'count'} !== null) {
             $object->setCount($data->{'count'});
+        } elseif (property_exists($data, 'count') && $data->{'count'} === null) {
+            $object->setCount(null);
         }
         if (property_exists($data, 'next') && $data->{'next'} !== null) {
             $object->setNext($data->{'next'});
@@ -47,12 +48,14 @@ final class SignrequestsGetResponse200Normalizer implements DenormalizerInterfac
         } elseif (property_exists($data, 'previous') && $data->{'previous'} === null) {
             $object->setPrevious(null);
         }
-        if (property_exists($data, 'results')) {
+        if (property_exists($data, 'results') && $data->{'results'} !== null) {
             $values = [];
             foreach ($data->{'results'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'SignRequest\\Client\\Model\\SignRequest', 'json', $context);
             }
             $object->setResults($values);
+        } elseif (property_exists($data, 'results') && $data->{'results'} === null) {
+            $object->setResults(null);
         }
 
         return $object;
@@ -63,15 +66,27 @@ final class SignrequestsGetResponse200Normalizer implements DenormalizerInterfac
         $data = new stdClass();
         if ($object->getCount() !== null) {
             $data->{'count'} = $object->getCount();
+        } else {
+            $data->{'count'} = null;
         }
-        $data->{'next'}     = $object->getNext();
-        $data->{'previous'} = $object->getPrevious();
+        if ($object->getNext() !== null) {
+            $data->{'next'} = $object->getNext();
+        } else {
+            $data->{'next'} = null;
+        }
+        if ($object->getPrevious() !== null) {
+            $data->{'previous'} = $object->getPrevious();
+        } else {
+            $data->{'previous'} = null;
+        }
         if ($object->getResults() !== null) {
             $values = [];
             foreach ($object->getResults() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data->{'results'} = $values;
+        } else {
+            $data->{'results'} = null;
         }
 
         return $data;

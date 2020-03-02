@@ -7,44 +7,44 @@ namespace SignRequest\Client\Model;
 final class Template
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
      * Defaults to filename.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $uuid;
     /**
-     * @var User
+     * @var User|null
      */
     protected $user;
     /**
-     * @var TemplateTeam
+     * @var TemplateTeam|null
      */
     protected $team;
     /**
      * `m`: only me, `mo`: me and others, `o`: only others.
      *
-     * @var string
+     * @var string|null
      */
     protected $who;
     /**
-     * @var DocumentSignerTemplateConf[]
+     * @var DocumentSignerTemplateConf[]|null
      */
     protected $signers = [];
 
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl(string $url): self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
 
@@ -54,7 +54,7 @@ final class Template
     /**
      * Defaults to filename.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -62,43 +62,43 @@ final class Template
     /**
      * Defaults to filename.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getUuid(): string
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
 
-    public function setUuid(string $uuid): self
+    public function setUuid(?string $uuid): self
     {
         $this->uuid = $uuid;
 
         return $this;
     }
 
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(User $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getTeam(): TemplateTeam
+    public function getTeam(): ?TemplateTeam
     {
         return $this->team;
     }
 
-    public function setTeam(TemplateTeam $team): self
+    public function setTeam(?TemplateTeam $team): self
     {
         $this->team = $team;
 
@@ -108,7 +108,7 @@ final class Template
     /**
      * `m`: only me, `mo`: me and others, `o`: only others.
      */
-    public function getWho(): string
+    public function getWho(): ?string
     {
         return $this->who;
     }
@@ -116,7 +116,7 @@ final class Template
     /**
      * `m`: only me, `mo`: me and others, `o`: only others.
      */
-    public function setWho(string $who): self
+    public function setWho(?string $who): self
     {
         $this->who = $who;
 
@@ -124,17 +124,17 @@ final class Template
     }
 
     /**
-     * @return DocumentSignerTemplateConf[]
+     * @return DocumentSignerTemplateConf[]|null
      */
-    public function getSigners(): array
+    public function getSigners(): ?array
     {
         return $this->signers;
     }
 
     /**
-     * @param DocumentSignerTemplateConf[] $signers
+     * @param DocumentSignerTemplateConf[]|null $signers
      */
-    public function setSigners(array $signers): self
+    public function setSigners(?array $signers): self
     {
         $this->signers = $signers;
 

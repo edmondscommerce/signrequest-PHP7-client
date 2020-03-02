@@ -6,7 +6,6 @@ namespace SignRequest\Client\Normalizer;
 
 use DateTime;
 use stdClass;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -32,7 +31,7 @@ final class SignerInputsNormalizer implements DenormalizerInterface, NormalizerI
     public function denormalize($data, $class, string $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \SignRequest\Client\Model\SignerInputs();
         if (property_exists($data, 'type') && $data->{'type'} !== null) {
@@ -40,11 +39,15 @@ final class SignerInputsNormalizer implements DenormalizerInterface, NormalizerI
         } elseif (property_exists($data, 'type') && $data->{'type'} === null) {
             $object->setType(null);
         }
-        if (property_exists($data, 'page_index')) {
+        if (property_exists($data, 'page_index') && $data->{'page_index'} !== null) {
             $object->setPageIndex($data->{'page_index'});
+        } elseif (property_exists($data, 'page_index') && $data->{'page_index'} === null) {
+            $object->setPageIndex(null);
         }
-        if (property_exists($data, 'text')) {
+        if (property_exists($data, 'text') && $data->{'text'} !== null) {
             $object->setText($data->{'text'});
+        } elseif (property_exists($data, 'text') && $data->{'text'} === null) {
+            $object->setText(null);
         }
         if (property_exists($data, 'checkbox_value') && $data->{'checkbox_value'} !== null) {
             $object->setCheckboxValue($data->{'checkbox_value'});
@@ -72,22 +75,42 @@ final class SignerInputsNormalizer implements DenormalizerInterface, NormalizerI
 
     public function normalize($object, string $format = null, array $context = [])
     {
-        $data           = new stdClass();
-        $data->{'type'} = $object->getType();
+        $data = new stdClass();
+        if ($object->getType() !== null) {
+            $data->{'type'} = $object->getType();
+        } else {
+            $data->{'type'} = null;
+        }
         if ($object->getPageIndex() !== null) {
             $data->{'page_index'} = $object->getPageIndex();
+        } else {
+            $data->{'page_index'} = null;
         }
         if ($object->getText() !== null) {
             $data->{'text'} = $object->getText();
+        } else {
+            $data->{'text'} = null;
         }
-        $data->{'checkbox_value'} = $object->getCheckboxValue();
+        if ($object->getCheckboxValue() !== null) {
+            $data->{'checkbox_value'} = $object->getCheckboxValue();
+        } else {
+            $data->{'checkbox_value'} = null;
+        }
         if ($object->getDateValue() !== null) {
             $data->{'date_value'} = $object->getDateValue()->format('Y-m-d');
         } else {
             $data->{'date_value'} = null;
         }
-        $data->{'external_id'}      = $object->getExternalId();
-        $data->{'placeholder_uuid'} = $object->getPlaceholderUuid();
+        if ($object->getExternalId() !== null) {
+            $data->{'external_id'} = $object->getExternalId();
+        } else {
+            $data->{'external_id'} = null;
+        }
+        if ($object->getPlaceholderUuid() !== null) {
+            $data->{'placeholder_uuid'} = $object->getPlaceholderUuid();
+        } else {
+            $data->{'placeholder_uuid'} = null;
+        }
 
         return $data;
     }

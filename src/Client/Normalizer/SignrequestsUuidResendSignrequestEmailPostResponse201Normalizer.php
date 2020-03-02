@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use stdClass;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,11 +30,13 @@ final class SignrequestsUuidResendSignrequestEmailPostResponse201Normalizer impl
     public function denormalize($data, $class, string $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \SignRequest\Client\Model\SignrequestsUuidResendSignrequestEmailPostResponse201();
-        if (property_exists($data, 'detail')) {
+        if (property_exists($data, 'detail') && $data->{'detail'} !== null) {
             $object->setDetail($data->{'detail'});
+        } elseif (property_exists($data, 'detail') && $data->{'detail'} === null) {
+            $object->setDetail(null);
         }
 
         return $object;
@@ -46,6 +47,8 @@ final class SignrequestsUuidResendSignrequestEmailPostResponse201Normalizer impl
         $data = new stdClass();
         if ($object->getDetail() !== null) {
             $data->{'detail'} = $object->getDetail();
+        } else {
+            $data->{'detail'} = null;
         }
 
         return $data;

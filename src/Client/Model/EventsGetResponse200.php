@@ -7,7 +7,7 @@ namespace SignRequest\Client\Model;
 final class EventsGetResponse200
 {
     /**
-     * @var int
+     * @var int|null
      */
     protected $count;
     /**
@@ -19,16 +19,16 @@ final class EventsGetResponse200
      */
     protected $previous;
     /**
-     * @var Event[]
+     * @var Event[]|null
      */
     protected $results = [];
 
-    public function getCount(): int
+    public function getCount(): ?int
     {
         return $this->count;
     }
 
-    public function setCount(int $count): self
+    public function setCount(?int $count): self
     {
         $this->count = $count;
 
@@ -60,17 +60,17 @@ final class EventsGetResponse200
     }
 
     /**
-     * @return Event[]
+     * @return Event[]|null
      */
-    public function getResults(): array
+    public function getResults(): ?array
     {
         return $this->results;
     }
 
     /**
-     * @param Event[] $results
+     * @param Event[]|null $results
      */
-    public function setResults(array $results): self
+    public function setResults(?array $results): self
     {
         $this->results = $results;
 

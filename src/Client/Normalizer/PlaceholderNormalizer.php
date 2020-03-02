@@ -6,7 +6,6 @@ namespace SignRequest\Client\Normalizer;
 
 use DateTime;
 use stdClass;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -32,20 +31,28 @@ final class PlaceholderNormalizer implements DenormalizerInterface, NormalizerIn
     public function denormalize($data, $class, string $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \SignRequest\Client\Model\Placeholder();
-        if (property_exists($data, 'uuid')) {
+        if (property_exists($data, 'uuid') && $data->{'uuid'} !== null) {
             $object->setUuid($data->{'uuid'});
+        } elseif (property_exists($data, 'uuid') && $data->{'uuid'} === null) {
+            $object->setUuid(null);
         }
-        if (property_exists($data, 'type')) {
+        if (property_exists($data, 'type') && $data->{'type'} !== null) {
             $object->setType($data->{'type'});
+        } elseif (property_exists($data, 'type') && $data->{'type'} === null) {
+            $object->setType(null);
         }
-        if (property_exists($data, 'page_index')) {
+        if (property_exists($data, 'page_index') && $data->{'page_index'} !== null) {
             $object->setPageIndex($data->{'page_index'});
+        } elseif (property_exists($data, 'page_index') && $data->{'page_index'} === null) {
+            $object->setPageIndex(null);
         }
-        if (property_exists($data, 'prefill')) {
+        if (property_exists($data, 'prefill') && $data->{'prefill'} !== null) {
             $object->setPrefill($data->{'prefill'});
+        } elseif (property_exists($data, 'prefill') && $data->{'prefill'} === null) {
+            $object->setPrefill(null);
         }
         if (property_exists($data, 'text') && $data->{'text'} !== null) {
             $object->setText($data->{'text'});
@@ -76,21 +83,39 @@ final class PlaceholderNormalizer implements DenormalizerInterface, NormalizerIn
         $data = new stdClass();
         if ($object->getType() !== null) {
             $data->{'type'} = $object->getType();
+        } else {
+            $data->{'type'} = null;
         }
         if ($object->getPageIndex() !== null) {
             $data->{'page_index'} = $object->getPageIndex();
+        } else {
+            $data->{'page_index'} = null;
         }
         if ($object->getPrefill() !== null) {
             $data->{'prefill'} = $object->getPrefill();
+        } else {
+            $data->{'prefill'} = null;
         }
-        $data->{'text'}           = $object->getText();
-        $data->{'checkbox_value'} = $object->getCheckboxValue();
+        if ($object->getText() !== null) {
+            $data->{'text'} = $object->getText();
+        } else {
+            $data->{'text'} = null;
+        }
+        if ($object->getCheckboxValue() !== null) {
+            $data->{'checkbox_value'} = $object->getCheckboxValue();
+        } else {
+            $data->{'checkbox_value'} = null;
+        }
         if ($object->getDateValue() !== null) {
             $data->{'date_value'} = $object->getDateValue()->format('Y-m-d');
         } else {
             $data->{'date_value'} = null;
         }
-        $data->{'external_id'} = $object->getExternalId();
+        if ($object->getExternalId() !== null) {
+            $data->{'external_id'} = $object->getExternalId();
+        } else {
+            $data->{'external_id'} = null;
+        }
 
         return $data;
     }

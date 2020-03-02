@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Tests\Assets\Documents;
 
 use InvalidArgumentException;
-use stdClass;
 use function implode;
 
 final class PrefillTagData
@@ -40,10 +39,10 @@ final class PrefillTagData
         return $this->id;
     }
 
-    public function getTagData(): stdClass
+    public function getTagData(): array
     {
-        $tag              = new stdClass();
-        $tag->external_id = $this->id;
+        $tag                = [];
+        $tag['external_id'] = $this->id;
         switch ($this->type) {
             case self::TYPE_DATE:
                 return $this->getDateTag($tag);
@@ -54,23 +53,23 @@ final class PrefillTagData
         }
     }
 
-    private function getDateTag(stdClass $tag): stdClass
+    private function getDateTag(array $tag): array
     {
-        $tag->date_value = $this->value;
+        $tag['date_value'] = $this->value;
 
         return $tag;
     }
 
-    private function getCheckboxTag(stdClass $tag): stdClass
+    private function getCheckboxTag(array $tag): array
     {
-        $tag->checkbox_value = $this->value;
+        $tag['checkbox_value'] = $this->value;
 
         return $tag;
     }
 
-    private function getTextTag(stdClass $tag): stdClass
+    private function getTextTag(array $tag): array
     {
-        $tag->text = $this->value;
+        $tag['text'] = $this->value;
 
         return $tag;
     }

@@ -7,96 +7,96 @@ namespace SignRequest\Client\Model;
 final class InlineTeamMember
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $uuid;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @var User
+     * @var User|null
      */
     protected $user;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $isAdmin;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $isActive;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $isOwner;
 
-    public function getUuid(): string
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
 
-    public function setUuid(string $uuid): self
+    public function setUuid(?string $uuid): self
     {
         $this->uuid = $uuid;
 
         return $this;
     }
 
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl(string $url): self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
 
         return $this;
     }
 
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(User $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getIsAdmin(): bool
+    public function getIsAdmin(): ?bool
     {
         return $this->isAdmin;
     }
 
-    public function setIsAdmin(bool $isAdmin): self
+    public function setIsAdmin(?bool $isAdmin): self
     {
         $this->isAdmin = $isAdmin;
 
         return $this;
     }
 
-    public function getIsActive(): bool
+    public function getIsActive(): ?bool
     {
         return $this->isActive;
     }
 
-    public function setIsActive(bool $isActive): self
+    public function setIsActive(?bool $isActive): self
     {
         $this->isActive = $isActive;
 
         return $this;
     }
 
-    public function getIsOwner(): bool
+    public function getIsOwner(): ?bool
     {
         return $this->isOwner;
     }
 
-    public function setIsOwner(bool $isOwner): self
+    public function setIsOwner(?bool $isOwner): self
     {
         $this->isOwner = $isOwner;
 

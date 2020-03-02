@@ -7,11 +7,11 @@ namespace SignRequest\Client\Model;
 final class DocumentAttachment
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @var string
+     * @var string|null
      */
     protected $uuid;
     /**
@@ -45,28 +45,28 @@ final class DocumentAttachment
      */
     protected $fileFromUrl;
     /**
-     * @var string
+     * @var string|null
      */
     protected $document;
 
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl(string $url): self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
 
         return $this;
     }
 
-    public function getUuid(): string
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
 
-    public function setUuid(string $uuid): self
+    public function setUuid(?string $uuid): self
     {
         $this->uuid = $uuid;
 
@@ -163,12 +163,12 @@ final class DocumentAttachment
         return $this;
     }
 
-    public function getDocument(): string
+    public function getDocument(): ?string
     {
         return $this->document;
     }
 
-    public function setDocument(string $document): self
+    public function setDocument(?string $document): self
     {
         $this->document = $document;
 

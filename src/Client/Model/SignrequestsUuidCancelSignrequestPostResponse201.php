@@ -7,32 +7,32 @@ namespace SignRequest\Client\Model;
 final class SignrequestsUuidCancelSignrequestPostResponse201
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $detail;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $cancelled;
 
-    public function getDetail(): string
+    public function getDetail(): ?string
     {
         return $this->detail;
     }
 
-    public function setDetail(string $detail): self
+    public function setDetail(?string $detail): self
     {
         $this->detail = $detail;
 
         return $this;
     }
 
-    public function getCancelled(): bool
+    public function getCancelled(): ?bool
     {
         return $this->cancelled;
     }
 
-    public function setCancelled(bool $cancelled): self
+    public function setCancelled(?bool $cancelled): self
     {
         $this->cancelled = $cancelled;
 

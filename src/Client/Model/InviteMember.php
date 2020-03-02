@@ -7,48 +7,48 @@ namespace SignRequest\Client\Model;
 final class InviteMember
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $isAdmin = false;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $isOwner = false;
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    public function getIsAdmin(): bool
+    public function getIsAdmin(): ?bool
     {
         return $this->isAdmin;
     }
 
-    public function setIsAdmin(bool $isAdmin): self
+    public function setIsAdmin(?bool $isAdmin): self
     {
         $this->isAdmin = $isAdmin;
 
         return $this;
     }
 
-    public function getIsOwner(): bool
+    public function getIsOwner(): ?bool
     {
         return $this->isOwner;
     }
 
-    public function setIsOwner(bool $isOwner): self
+    public function setIsOwner(?bool $isOwner): self
     {
         $this->isOwner = $isOwner;
 

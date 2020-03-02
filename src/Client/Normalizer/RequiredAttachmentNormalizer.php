@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use stdClass;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,14 +30,18 @@ final class RequiredAttachmentNormalizer implements DenormalizerInterface, Norma
     public function denormalize($data, $class, string $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \SignRequest\Client\Model\RequiredAttachment();
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
+        } elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
         }
-        if (property_exists($data, 'uuid')) {
+        if (property_exists($data, 'uuid') && $data->{'uuid'} !== null) {
             $object->setUuid($data->{'uuid'});
+        } elseif (property_exists($data, 'uuid') && $data->{'uuid'} === null) {
+            $object->setUuid(null);
         }
 
         return $object;
@@ -49,6 +52,8 @@ final class RequiredAttachmentNormalizer implements DenormalizerInterface, Norma
         $data = new stdClass();
         if ($object->getName() !== null) {
             $data->{'name'} = $object->getName();
+        } else {
+            $data->{'name'} = null;
         }
 
         return $data;

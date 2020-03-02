@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use stdClass;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,26 +30,38 @@ final class AuthTokenNormalizer implements DenormalizerInterface, NormalizerInte
     public function denormalize($data, $class, string $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \SignRequest\Client\Model\AuthToken();
-        if (property_exists($data, 'email')) {
+        if (property_exists($data, 'email') && $data->{'email'} !== null) {
             $object->setEmail($data->{'email'});
+        } elseif (property_exists($data, 'email') && $data->{'email'} === null) {
+            $object->setEmail(null);
         }
-        if (property_exists($data, 'password')) {
+        if (property_exists($data, 'password') && $data->{'password'} !== null) {
             $object->setPassword($data->{'password'});
+        } elseif (property_exists($data, 'password') && $data->{'password'} === null) {
+            $object->setPassword(null);
         }
-        if (property_exists($data, 'subdomain')) {
+        if (property_exists($data, 'subdomain') && $data->{'subdomain'} !== null) {
             $object->setSubdomain($data->{'subdomain'});
+        } elseif (property_exists($data, 'subdomain') && $data->{'subdomain'} === null) {
+            $object->setSubdomain(null);
         }
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
+        } elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
         }
-        if (property_exists($data, 'key')) {
+        if (property_exists($data, 'key') && $data->{'key'} !== null) {
             $object->setKey($data->{'key'});
+        } elseif (property_exists($data, 'key') && $data->{'key'} === null) {
+            $object->setKey(null);
         }
-        if (property_exists($data, 'url')) {
+        if (property_exists($data, 'url') && $data->{'url'} !== null) {
             $object->setUrl($data->{'url'});
+        } elseif (property_exists($data, 'url') && $data->{'url'} === null) {
+            $object->setUrl(null);
         }
 
         return $object;
@@ -61,15 +72,23 @@ final class AuthTokenNormalizer implements DenormalizerInterface, NormalizerInte
         $data = new stdClass();
         if ($object->getEmail() !== null) {
             $data->{'email'} = $object->getEmail();
+        } else {
+            $data->{'email'} = null;
         }
         if ($object->getPassword() !== null) {
             $data->{'password'} = $object->getPassword();
+        } else {
+            $data->{'password'} = null;
         }
         if ($object->getSubdomain() !== null) {
             $data->{'subdomain'} = $object->getSubdomain();
+        } else {
+            $data->{'subdomain'} = null;
         }
         if ($object->getName() !== null) {
             $data->{'name'} = $object->getName();
+        } else {
+            $data->{'name'} = null;
         }
 
         return $data;

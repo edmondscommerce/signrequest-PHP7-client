@@ -7,32 +7,32 @@ namespace SignRequest\Client\Model;
 final class RequiredAttachment
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $uuid;
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getUuid(): string
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
 
-    public function setUuid(string $uuid): self
+    public function setUuid(?string $uuid): self
     {
         $this->uuid = $uuid;
 

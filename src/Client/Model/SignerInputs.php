@@ -13,11 +13,11 @@ final class SignerInputs
      */
     protected $type;
     /**
-     * @var int
+     * @var int|null
      */
     protected $pageIndex;
     /**
-     * @var string
+     * @var string|null
      */
     protected $text;
     /**
@@ -49,24 +49,24 @@ final class SignerInputs
         return $this;
     }
 
-    public function getPageIndex(): int
+    public function getPageIndex(): ?int
     {
         return $this->pageIndex;
     }
 
-    public function setPageIndex(int $pageIndex): self
+    public function setPageIndex(?int $pageIndex): self
     {
         $this->pageIndex = $pageIndex;
 
         return $this;
     }
 
-    public function getText(): string
+    public function getText(): ?string
     {
         return $this->text;
     }
 
-    public function setText(string $text): self
+    public function setText(?string $text): self
     {
         $this->text = $text;
 

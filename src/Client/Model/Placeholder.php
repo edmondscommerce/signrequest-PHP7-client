@@ -9,19 +9,19 @@ use DateTime;
 final class Placeholder
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $uuid;
     /**
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
-     * @var int
+     * @var int|null
      */
     protected $pageIndex;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $prefill;
     /**
@@ -41,48 +41,48 @@ final class Placeholder
      */
     protected $externalId;
 
-    public function getUuid(): string
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
 
-    public function setUuid(string $uuid): self
+    public function setUuid(?string $uuid): self
     {
         $this->uuid = $uuid;
 
         return $this;
     }
 
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 
         return $this;
     }
 
-    public function getPageIndex(): int
+    public function getPageIndex(): ?int
     {
         return $this->pageIndex;
     }
 
-    public function setPageIndex(int $pageIndex): self
+    public function setPageIndex(?int $pageIndex): self
     {
         $this->pageIndex = $pageIndex;
 
         return $this;
     }
 
-    public function getPrefill(): bool
+    public function getPrefill(): ?bool
     {
         return $this->prefill;
     }
 
-    public function setPrefill(bool $prefill): self
+    public function setPrefill(?bool $prefill): self
     {
         $this->prefill = $prefill;
 

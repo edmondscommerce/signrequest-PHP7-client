@@ -7,48 +7,48 @@ namespace SignRequest\Client\Model;
 final class TemplateTeam
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $subdomain;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getSubdomain(): string
+    public function getSubdomain(): ?string
     {
         return $this->subdomain;
     }
 
-    public function setSubdomain(string $subdomain): self
+    public function setSubdomain(?string $subdomain): self
     {
         $this->subdomain = $subdomain;
 
         return $this;
     }
 
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl(string $url): self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
 

@@ -9,25 +9,25 @@ use DateTime;
 final class Document
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @var DocumentTeam
+     * @var DocumentTeam|null
      */
     protected $team;
     /**
-     * @var string
+     * @var string|null
      */
     protected $uuid;
     /**
-     * @var User
+     * @var User|null
      */
     protected $user;
     /**
      * Temporary URL to original file as PDF, expires in five minutes.
      *
-     * @var string
+     * @var string|null
      */
     protected $fileAsPdf;
     /**
@@ -85,15 +85,15 @@ final class Document
     /**
      * Prefill signer input data, see [prefill tags](#section/Preparing-a-document/Prefill-tags-templates).
      *
-     * @var InlinePrefillTags[]
+     * @var InlinePrefillTags[]|null
      */
     protected $prefillTags = [];
     /**
-     * @var InlineIntegrationData[]
+     * @var InlineIntegrationData[]|null
      */
     protected $integrations = [];
     /**
-     * @var FileFromSf
+     * @var FileFromSf|null
      */
     protected $fileFromSf;
     /**
@@ -111,43 +111,43 @@ final class Document
     /**
      * Temporary URL to signed document as PDF, expires in five minutes.
      *
-     * @var string
+     * @var string|null
      */
     protected $pdf;
     /**
      * `co`: converting, `ne`: new, `se`: sent, `vi`: viewed, `si`: signed, `do`: downloaded, `sd`: signed and downloaded, `ca`: cancelled, `de`: declined, `ec`: error converting, `es`: error sending, `xp`: expired.
      *
-     * @var string
+     * @var string|null
      */
     protected $status;
     /**
-     * @var DocumentSignrequest
+     * @var DocumentSignrequest|null
      */
     protected $signrequest;
     /**
      * Indicates whether document was created using the API.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $apiUsed;
     /**
-     * @var DocumentSigningLog
+     * @var DocumentSigningLog|null
      */
     protected $signingLog;
     /**
      * SHA256 hash of PDF contents.
      *
-     * @var string
+     * @var string|null
      */
     protected $securityHash;
     /**
-     * @var DocumentAttachment[]
+     * @var DocumentAttachment[]|null
      */
     protected $attachments = [];
     /**
      * Date and time calculated using `auto_delete_days` after which a finished document (signed/cancelled/declined) will be automatically deleted.
      *
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $autoDeleteAfter;
     /**
@@ -159,58 +159,58 @@ final class Document
     /**
      * Date and time calculated using `auto_expire_days` after which a non finished document will be automatically expired.
      *
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $autoExpireAfter;
     /**
      * Indicates whether a change to the document is processing and the PDF may be out of date. It is recommended to wait until processing has finished before downloading the PDF. Webhooks are not sent until processing has been completed.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $processing;
 
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl(string $url): self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
 
         return $this;
     }
 
-    public function getTeam(): DocumentTeam
+    public function getTeam(): ?DocumentTeam
     {
         return $this->team;
     }
 
-    public function setTeam(DocumentTeam $team): self
+    public function setTeam(?DocumentTeam $team): self
     {
         $this->team = $team;
 
         return $this;
     }
 
-    public function getUuid(): string
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
 
-    public function setUuid(string $uuid): self
+    public function setUuid(?string $uuid): self
     {
         $this->uuid = $uuid;
 
         return $this;
     }
 
-    public function getUser(): User
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(User $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
@@ -220,7 +220,7 @@ final class Document
     /**
      * Temporary URL to original file as PDF, expires in five minutes.
      */
-    public function getFileAsPdf(): string
+    public function getFileAsPdf(): ?string
     {
         return $this->fileAsPdf;
     }
@@ -228,7 +228,7 @@ final class Document
     /**
      * Temporary URL to original file as PDF, expires in five minutes.
      */
-    public function setFileAsPdf(string $fileAsPdf): self
+    public function setFileAsPdf(?string $fileAsPdf): self
     {
         $this->fileAsPdf = $fileAsPdf;
 
@@ -394,9 +394,9 @@ final class Document
     /**
      * Prefill signer input data, see [prefill tags](#section/Preparing-a-document/Prefill-tags-templates).
      *
-     * @return InlinePrefillTags[]
+     * @return InlinePrefillTags[]|null
      */
-    public function getPrefillTags(): array
+    public function getPrefillTags(): ?array
     {
         return $this->prefillTags;
     }
@@ -404,9 +404,9 @@ final class Document
     /**
      * Prefill signer input data, see [prefill tags](#section/Preparing-a-document/Prefill-tags-templates).
      *
-     * @param InlinePrefillTags[] $prefillTags
+     * @param InlinePrefillTags[]|null $prefillTags
      */
-    public function setPrefillTags(array $prefillTags): self
+    public function setPrefillTags(?array $prefillTags): self
     {
         $this->prefillTags = $prefillTags;
 
@@ -414,29 +414,29 @@ final class Document
     }
 
     /**
-     * @return InlineIntegrationData[]
+     * @return InlineIntegrationData[]|null
      */
-    public function getIntegrations(): array
+    public function getIntegrations(): ?array
     {
         return $this->integrations;
     }
 
     /**
-     * @param InlineIntegrationData[] $integrations
+     * @param InlineIntegrationData[]|null $integrations
      */
-    public function setIntegrations(array $integrations): self
+    public function setIntegrations(?array $integrations): self
     {
         $this->integrations = $integrations;
 
         return $this;
     }
 
-    public function getFileFromSf(): FileFromSf
+    public function getFileFromSf(): ?FileFromSf
     {
         return $this->fileFromSf;
     }
 
-    public function setFileFromSf(FileFromSf $fileFromSf): self
+    public function setFileFromSf(?FileFromSf $fileFromSf): self
     {
         $this->fileFromSf = $fileFromSf;
 
@@ -482,7 +482,7 @@ final class Document
     /**
      * Temporary URL to signed document as PDF, expires in five minutes.
      */
-    public function getPdf(): string
+    public function getPdf(): ?string
     {
         return $this->pdf;
     }
@@ -490,7 +490,7 @@ final class Document
     /**
      * Temporary URL to signed document as PDF, expires in five minutes.
      */
-    public function setPdf(string $pdf): self
+    public function setPdf(?string $pdf): self
     {
         $this->pdf = $pdf;
 
@@ -500,7 +500,7 @@ final class Document
     /**
      * `co`: converting, `ne`: new, `se`: sent, `vi`: viewed, `si`: signed, `do`: downloaded, `sd`: signed and downloaded, `ca`: cancelled, `de`: declined, `ec`: error converting, `es`: error sending, `xp`: expired.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -508,19 +508,19 @@ final class Document
     /**
      * `co`: converting, `ne`: new, `se`: sent, `vi`: viewed, `si`: signed, `do`: downloaded, `sd`: signed and downloaded, `ca`: cancelled, `de`: declined, `ec`: error converting, `es`: error sending, `xp`: expired.
      */
-    public function setStatus(string $status): self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
 
         return $this;
     }
 
-    public function getSignrequest(): DocumentSignrequest
+    public function getSignrequest(): ?DocumentSignrequest
     {
         return $this->signrequest;
     }
 
-    public function setSignrequest(DocumentSignrequest $signrequest): self
+    public function setSignrequest(?DocumentSignrequest $signrequest): self
     {
         $this->signrequest = $signrequest;
 
@@ -530,7 +530,7 @@ final class Document
     /**
      * Indicates whether document was created using the API.
      */
-    public function getApiUsed(): bool
+    public function getApiUsed(): ?bool
     {
         return $this->apiUsed;
     }
@@ -538,19 +538,19 @@ final class Document
     /**
      * Indicates whether document was created using the API.
      */
-    public function setApiUsed(bool $apiUsed): self
+    public function setApiUsed(?bool $apiUsed): self
     {
         $this->apiUsed = $apiUsed;
 
         return $this;
     }
 
-    public function getSigningLog(): DocumentSigningLog
+    public function getSigningLog(): ?DocumentSigningLog
     {
         return $this->signingLog;
     }
 
-    public function setSigningLog(DocumentSigningLog $signingLog): self
+    public function setSigningLog(?DocumentSigningLog $signingLog): self
     {
         $this->signingLog = $signingLog;
 
@@ -560,7 +560,7 @@ final class Document
     /**
      * SHA256 hash of PDF contents.
      */
-    public function getSecurityHash(): string
+    public function getSecurityHash(): ?string
     {
         return $this->securityHash;
     }
@@ -568,7 +568,7 @@ final class Document
     /**
      * SHA256 hash of PDF contents.
      */
-    public function setSecurityHash(string $securityHash): self
+    public function setSecurityHash(?string $securityHash): self
     {
         $this->securityHash = $securityHash;
 
@@ -576,17 +576,17 @@ final class Document
     }
 
     /**
-     * @return DocumentAttachment[]
+     * @return DocumentAttachment[]|null
      */
-    public function getAttachments(): array
+    public function getAttachments(): ?array
     {
         return $this->attachments;
     }
 
     /**
-     * @param DocumentAttachment[] $attachments
+     * @param DocumentAttachment[]|null $attachments
      */
-    public function setAttachments(array $attachments): self
+    public function setAttachments(?array $attachments): self
     {
         $this->attachments = $attachments;
 
@@ -596,7 +596,7 @@ final class Document
     /**
      * Date and time calculated using `auto_delete_days` after which a finished document (signed/cancelled/declined) will be automatically deleted.
      */
-    public function getAutoDeleteAfter(): DateTime
+    public function getAutoDeleteAfter(): ?DateTime
     {
         return $this->autoDeleteAfter;
     }
@@ -604,7 +604,7 @@ final class Document
     /**
      * Date and time calculated using `auto_delete_days` after which a finished document (signed/cancelled/declined) will be automatically deleted.
      */
-    public function setAutoDeleteAfter(DateTime $autoDeleteAfter): self
+    public function setAutoDeleteAfter(?DateTime $autoDeleteAfter): self
     {
         $this->autoDeleteAfter = $autoDeleteAfter;
 
@@ -632,7 +632,7 @@ final class Document
     /**
      * Date and time calculated using `auto_expire_days` after which a non finished document will be automatically expired.
      */
-    public function getAutoExpireAfter(): DateTime
+    public function getAutoExpireAfter(): ?DateTime
     {
         return $this->autoExpireAfter;
     }
@@ -640,7 +640,7 @@ final class Document
     /**
      * Date and time calculated using `auto_expire_days` after which a non finished document will be automatically expired.
      */
-    public function setAutoExpireAfter(DateTime $autoExpireAfter): self
+    public function setAutoExpireAfter(?DateTime $autoExpireAfter): self
     {
         $this->autoExpireAfter = $autoExpireAfter;
 
@@ -650,7 +650,7 @@ final class Document
     /**
      * Indicates whether a change to the document is processing and the PDF may be out of date. It is recommended to wait until processing has finished before downloading the PDF. Webhooks are not sent until processing has been completed.
      */
-    public function getProcessing(): bool
+    public function getProcessing(): ?bool
     {
         return $this->processing;
     }
@@ -658,7 +658,7 @@ final class Document
     /**
      * Indicates whether a change to the document is processing and the PDF may be out of date. It is recommended to wait until processing has finished before downloading the PDF. Webhooks are not sent until processing has been completed.
      */
-    public function setProcessing(bool $processing): self
+    public function setProcessing(?bool $processing): self
     {
         $this->processing = $processing;
 

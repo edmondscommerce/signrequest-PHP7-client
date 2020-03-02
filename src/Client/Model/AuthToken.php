@@ -7,96 +7,96 @@ namespace SignRequest\Client\Model;
 final class AuthToken
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
-     * @var string
+     * @var string|null
      */
     protected $password;
     /**
-     * @var string
+     * @var string|null
      */
     protected $subdomain;
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $key;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
 
         return $this;
     }
 
-    public function getSubdomain(): string
+    public function getSubdomain(): ?string
     {
         return $this->subdomain;
     }
 
-    public function setSubdomain(string $subdomain): self
+    public function setSubdomain(?string $subdomain): self
     {
         $this->subdomain = $subdomain;
 
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getKey(): string
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
-    public function setKey(string $key): self
+    public function setKey(?string $key): self
     {
         $this->key = $key;
 
         return $this;
     }
 
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl(string $url): self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
 

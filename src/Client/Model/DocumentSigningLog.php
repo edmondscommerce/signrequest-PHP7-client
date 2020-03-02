@@ -15,7 +15,7 @@ final class DocumentSigningLog
     /**
      * SHA256 hash of PDF contents.
      *
-     * @var string
+     * @var string|null
      */
     protected $securityHash;
 
@@ -40,7 +40,7 @@ final class DocumentSigningLog
     /**
      * SHA256 hash of PDF contents.
      */
-    public function getSecurityHash(): string
+    public function getSecurityHash(): ?string
     {
         return $this->securityHash;
     }
@@ -48,7 +48,7 @@ final class DocumentSigningLog
     /**
      * SHA256 hash of PDF contents.
      */
-    public function setSecurityHash(string $securityHash): self
+    public function setSecurityHash(?string $securityHash): self
     {
         $this->securityHash = $securityHash;
 

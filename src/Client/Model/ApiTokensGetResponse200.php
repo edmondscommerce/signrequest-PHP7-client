@@ -7,7 +7,7 @@ namespace SignRequest\Client\Model;
 final class ApiTokensGetResponse200
 {
     /**
-     * @var int
+     * @var int|null
      */
     protected $count;
     /**
@@ -19,16 +19,16 @@ final class ApiTokensGetResponse200
      */
     protected $previous;
     /**
-     * @var AuthToken[]
+     * @var AuthToken[]|null
      */
     protected $results = [];
 
-    public function getCount(): int
+    public function getCount(): ?int
     {
         return $this->count;
     }
 
-    public function setCount(int $count): self
+    public function setCount(?int $count): self
     {
         $this->count = $count;
 
@@ -60,17 +60,17 @@ final class ApiTokensGetResponse200
     }
 
     /**
-     * @return AuthToken[]
+     * @return AuthToken[]|null
      */
-    public function getResults(): array
+    public function getResults(): ?array
     {
         return $this->results;
     }
 
     /**
-     * @param AuthToken[] $results
+     * @param AuthToken[]|null $results
      */
-    public function setResults(array $results): self
+    public function setResults(?array $results): self
     {
         $this->results = $results;
 

@@ -7,7 +7,7 @@ namespace SignRequest\Client\Model;
 final class TemplatesGetResponse200
 {
     /**
-     * @var int
+     * @var int|null
      */
     protected $count;
     /**
@@ -19,16 +19,16 @@ final class TemplatesGetResponse200
      */
     protected $previous;
     /**
-     * @var Template[]
+     * @var Template[]|null
      */
     protected $results = [];
 
-    public function getCount(): int
+    public function getCount(): ?int
     {
         return $this->count;
     }
 
-    public function setCount(int $count): self
+    public function setCount(?int $count): self
     {
         $this->count = $count;
 
@@ -60,17 +60,17 @@ final class TemplatesGetResponse200
     }
 
     /**
-     * @return Template[]
+     * @return Template[]|null
      */
-    public function getResults(): array
+    public function getResults(): ?array
     {
         return $this->results;
     }
 
     /**
-     * @param Template[] $results
+     * @param Template[]|null $results
      */
-    public function setResults(array $results): self
+    public function setResults(?array $results): self
     {
         $this->results = $results;
 

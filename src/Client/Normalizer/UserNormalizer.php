@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use stdClass;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,20 +30,28 @@ final class UserNormalizer implements DenormalizerInterface, NormalizerInterface
     public function denormalize($data, $class, string $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \SignRequest\Client\Model\User();
-        if (property_exists($data, 'email')) {
+        if (property_exists($data, 'email') && $data->{'email'} !== null) {
             $object->setEmail($data->{'email'});
+        } elseif (property_exists($data, 'email') && $data->{'email'} === null) {
+            $object->setEmail(null);
         }
-        if (property_exists($data, 'first_name')) {
+        if (property_exists($data, 'first_name') && $data->{'first_name'} !== null) {
             $object->setFirstName($data->{'first_name'});
+        } elseif (property_exists($data, 'first_name') && $data->{'first_name'} === null) {
+            $object->setFirstName(null);
         }
-        if (property_exists($data, 'last_name')) {
+        if (property_exists($data, 'last_name') && $data->{'last_name'} !== null) {
             $object->setLastName($data->{'last_name'});
+        } elseif (property_exists($data, 'last_name') && $data->{'last_name'} === null) {
+            $object->setLastName(null);
         }
-        if (property_exists($data, 'display_name')) {
+        if (property_exists($data, 'display_name') && $data->{'display_name'} !== null) {
             $object->setDisplayName($data->{'display_name'});
+        } elseif (property_exists($data, 'display_name') && $data->{'display_name'} === null) {
+            $object->setDisplayName(null);
         }
 
         return $object;
@@ -55,12 +62,18 @@ final class UserNormalizer implements DenormalizerInterface, NormalizerInterface
         $data = new stdClass();
         if ($object->getEmail() !== null) {
             $data->{'email'} = $object->getEmail();
+        } else {
+            $data->{'email'} = null;
         }
         if ($object->getFirstName() !== null) {
             $data->{'first_name'} = $object->getFirstName();
+        } else {
+            $data->{'first_name'} = null;
         }
         if ($object->getLastName() !== null) {
             $data->{'last_name'} = $object->getLastName();
+        } else {
+            $data->{'last_name'} = null;
         }
 
         return $data;

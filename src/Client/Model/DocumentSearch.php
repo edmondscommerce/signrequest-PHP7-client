@@ -9,88 +9,88 @@ use DateTime;
 final class DocumentSearch
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $uuid;
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $created;
     /**
      * `co`: converting, `ne`: new, `se`: sent, `vi`: viewed, `si`: signed, `do`: downloaded, `sd`: signed and downloaded, `ca`: cancelled, `de`: declined, `ec`: error converting, `es`: error sending, `xp`: expired.
      *
-     * @var string
+     * @var string|null
      */
     protected $status;
     /**
-     * @var string
+     * @var string|null
      */
     protected $who;
     /**
      * Defaults to filename.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $autocomplete;
     /**
-     * @var string
+     * @var string|null
      */
     protected $fromEmail;
     /**
-     * @var int
+     * @var int|null
      */
     protected $nrExtraDocs;
     /**
-     * @var string[]
+     * @var string[]|null
      */
     protected $signerEmails = [];
     /**
-     * @var string
+     * @var string|null
      */
     protected $statusDisplay;
     /**
-     * @var int
+     * @var int|null
      */
     protected $createdTimestamp;
     /**
-     * @var int
+     * @var int|null
      */
     protected $finishedOnTimestamp;
     /**
-     * @var string
+     * @var string|null
      */
     protected $parentDoc;
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $finishedOn;
     /**
-     * @var string
+     * @var string|null
      */
     protected $subdomain;
 
-    public function getUuid(): string
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
 
-    public function setUuid(string $uuid): self
+    public function setUuid(?string $uuid): self
     {
         $this->uuid = $uuid;
 
         return $this;
     }
 
-    public function getCreated(): DateTime
+    public function getCreated(): ?DateTime
     {
         return $this->created;
     }
 
-    public function setCreated(DateTime $created): self
+    public function setCreated(?DateTime $created): self
     {
         $this->created = $created;
 
@@ -100,7 +100,7 @@ final class DocumentSearch
     /**
      * `co`: converting, `ne`: new, `se`: sent, `vi`: viewed, `si`: signed, `do`: downloaded, `sd`: signed and downloaded, `ca`: cancelled, `de`: declined, `ec`: error converting, `es`: error sending, `xp`: expired.
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -108,19 +108,19 @@ final class DocumentSearch
     /**
      * `co`: converting, `ne`: new, `se`: sent, `vi`: viewed, `si`: signed, `do`: downloaded, `sd`: signed and downloaded, `ca`: cancelled, `de`: declined, `ec`: error converting, `es`: error sending, `xp`: expired.
      */
-    public function setStatus(string $status): self
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
 
         return $this;
     }
 
-    public function getWho(): string
+    public function getWho(): ?string
     {
         return $this->who;
     }
 
-    public function setWho(string $who): self
+    public function setWho(?string $who): self
     {
         $this->who = $who;
 
@@ -130,7 +130,7 @@ final class DocumentSearch
     /**
      * Defaults to filename.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -138,43 +138,43 @@ final class DocumentSearch
     /**
      * Defaults to filename.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getAutocomplete(): string
+    public function getAutocomplete(): ?string
     {
         return $this->autocomplete;
     }
 
-    public function setAutocomplete(string $autocomplete): self
+    public function setAutocomplete(?string $autocomplete): self
     {
         $this->autocomplete = $autocomplete;
 
         return $this;
     }
 
-    public function getFromEmail(): string
+    public function getFromEmail(): ?string
     {
         return $this->fromEmail;
     }
 
-    public function setFromEmail(string $fromEmail): self
+    public function setFromEmail(?string $fromEmail): self
     {
         $this->fromEmail = $fromEmail;
 
         return $this;
     }
 
-    public function getNrExtraDocs(): int
+    public function getNrExtraDocs(): ?int
     {
         return $this->nrExtraDocs;
     }
 
-    public function setNrExtraDocs(int $nrExtraDocs): self
+    public function setNrExtraDocs(?int $nrExtraDocs): self
     {
         $this->nrExtraDocs = $nrExtraDocs;
 
@@ -182,89 +182,89 @@ final class DocumentSearch
     }
 
     /**
-     * @return string[]
+     * @return string[]|null
      */
-    public function getSignerEmails(): array
+    public function getSignerEmails(): ?array
     {
         return $this->signerEmails;
     }
 
     /**
-     * @param string[] $signerEmails
+     * @param string[]|null $signerEmails
      */
-    public function setSignerEmails(array $signerEmails): self
+    public function setSignerEmails(?array $signerEmails): self
     {
         $this->signerEmails = $signerEmails;
 
         return $this;
     }
 
-    public function getStatusDisplay(): string
+    public function getStatusDisplay(): ?string
     {
         return $this->statusDisplay;
     }
 
-    public function setStatusDisplay(string $statusDisplay): self
+    public function setStatusDisplay(?string $statusDisplay): self
     {
         $this->statusDisplay = $statusDisplay;
 
         return $this;
     }
 
-    public function getCreatedTimestamp(): int
+    public function getCreatedTimestamp(): ?int
     {
         return $this->createdTimestamp;
     }
 
-    public function setCreatedTimestamp(int $createdTimestamp): self
+    public function setCreatedTimestamp(?int $createdTimestamp): self
     {
         $this->createdTimestamp = $createdTimestamp;
 
         return $this;
     }
 
-    public function getFinishedOnTimestamp(): int
+    public function getFinishedOnTimestamp(): ?int
     {
         return $this->finishedOnTimestamp;
     }
 
-    public function setFinishedOnTimestamp(int $finishedOnTimestamp): self
+    public function setFinishedOnTimestamp(?int $finishedOnTimestamp): self
     {
         $this->finishedOnTimestamp = $finishedOnTimestamp;
 
         return $this;
     }
 
-    public function getParentDoc(): string
+    public function getParentDoc(): ?string
     {
         return $this->parentDoc;
     }
 
-    public function setParentDoc(string $parentDoc): self
+    public function setParentDoc(?string $parentDoc): self
     {
         $this->parentDoc = $parentDoc;
 
         return $this;
     }
 
-    public function getFinishedOn(): DateTime
+    public function getFinishedOn(): ?DateTime
     {
         return $this->finishedOn;
     }
 
-    public function setFinishedOn(DateTime $finishedOn): self
+    public function setFinishedOn(?DateTime $finishedOn): self
     {
         $this->finishedOn = $finishedOn;
 
         return $this;
     }
 
-    public function getSubdomain(): string
+    public function getSubdomain(): ?string
     {
         return $this->subdomain;
     }
 
-    public function setSubdomain(string $subdomain): self
+    public function setSubdomain(?string $subdomain): self
     {
         $this->subdomain = $subdomain;
 

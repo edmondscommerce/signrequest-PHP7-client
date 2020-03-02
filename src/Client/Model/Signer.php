@@ -9,67 +9,67 @@ use DateTime;
 final class Signer
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
-     * @var string
+     * @var string|null
      */
     protected $displayName;
     /**
-     * @var string
+     * @var string|null
      */
     protected $firstName;
     /**
-     * @var string
+     * @var string|null
      */
     protected $lastName;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $emailViewed;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $viewed;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $signed;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $downloaded;
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $signedOn;
     /**
      * When `false` user does not need to sign, but will receive a copy of the signed document and signing log, see: [Copy only](#section/Additional-signing-methods/Copy-only).
      *
-     * @var bool
+     * @var bool|null
      */
     protected $needsToSign = true;
     /**
      * Require user to approve the document (without adding a signature), see: [Approve only](#section/Additional-signing-methods/Approve-only).
      *
-     * @var bool
+     * @var bool|null
      */
     protected $approveOnly;
     /**
      * Send notifications about the document and a copy of the signed document and signing log, but don't require them to take any action, see: [Notify only](#section/Additional-signing-methods/Notify-only).
      *
-     * @var bool
+     * @var bool|null
      */
     protected $notifyOnly;
     /**
      * When used in combination with an embed url on the sender, after sender has signed, they will be redirected to the next `in_person` signer, see: [In person signing](#section/Additional-signing-methods/In-person-signing).
      *
-     * @var bool
+     * @var bool|null
      */
     protected $inPerson;
     /**
-     * @var int
+     * @var int|null
      */
     protected $order;
     /**
@@ -77,11 +77,11 @@ final class Signer
      */
     protected $language;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $forceLanguage;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $emailed;
     /**
@@ -93,31 +93,31 @@ final class Signer
      */
     protected $verifyBankAccount;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $declined;
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $declinedOn;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $forwarded;
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $forwardedOn;
     /**
-     * @var string
+     * @var string|null
      */
     protected $forwardedToEmail;
     /**
-     * @var string
+     * @var string|null
      */
     protected $forwardedReason;
     /**
-     * @var string
+     * @var string|null
      */
     protected $message;
     /**
@@ -125,7 +125,7 @@ final class Signer
      */
     protected $embedUrlUserId;
     /**
-     * @var SignerInputs[]
+     * @var SignerInputs[]|null
      */
     protected $inputs = [];
     /**
@@ -135,11 +135,11 @@ final class Signer
      */
     protected $useStampForApproveOnly;
     /**
-     * @var string
+     * @var string|null
      */
     protected $embedUrl;
     /**
-     * @var SignerAttachment[]
+     * @var SignerAttachment[]|null
      */
     protected $attachments = [];
     /**
@@ -151,122 +151,122 @@ final class Signer
      */
     protected $redirectUrlDeclined;
     /**
-     * @var string
+     * @var string|null
      */
     protected $afterDocument;
     /**
-     * @var InlineDocumentSignerIntegrationData[]
+     * @var InlineDocumentSignerIntegrationData[]|null
      */
     protected $integrations = [];
     /**
      * Require the signer to enter this password before signing a document. This field is write only.
      *
-     * @var string
+     * @var string|null
      */
     protected $password;
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    public function getDisplayName(): string
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
-    public function setDisplayName(string $displayName): self
+    public function setDisplayName(?string $displayName): self
     {
         $this->displayName = $displayName;
 
         return $this;
     }
 
-    public function getFirstName(): string
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
-    public function setFirstName(string $firstName): self
+    public function setFirstName(?string $firstName): self
     {
         $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function getLastName(): string
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
-    public function setLastName(string $lastName): self
+    public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
 
         return $this;
     }
 
-    public function getEmailViewed(): bool
+    public function getEmailViewed(): ?bool
     {
         return $this->emailViewed;
     }
 
-    public function setEmailViewed(bool $emailViewed): self
+    public function setEmailViewed(?bool $emailViewed): self
     {
         $this->emailViewed = $emailViewed;
 
         return $this;
     }
 
-    public function getViewed(): bool
+    public function getViewed(): ?bool
     {
         return $this->viewed;
     }
 
-    public function setViewed(bool $viewed): self
+    public function setViewed(?bool $viewed): self
     {
         $this->viewed = $viewed;
 
         return $this;
     }
 
-    public function getSigned(): bool
+    public function getSigned(): ?bool
     {
         return $this->signed;
     }
 
-    public function setSigned(bool $signed): self
+    public function setSigned(?bool $signed): self
     {
         $this->signed = $signed;
 
         return $this;
     }
 
-    public function getDownloaded(): bool
+    public function getDownloaded(): ?bool
     {
         return $this->downloaded;
     }
 
-    public function setDownloaded(bool $downloaded): self
+    public function setDownloaded(?bool $downloaded): self
     {
         $this->downloaded = $downloaded;
 
         return $this;
     }
 
-    public function getSignedOn(): DateTime
+    public function getSignedOn(): ?DateTime
     {
         return $this->signedOn;
     }
 
-    public function setSignedOn(DateTime $signedOn): self
+    public function setSignedOn(?DateTime $signedOn): self
     {
         $this->signedOn = $signedOn;
 
@@ -276,7 +276,7 @@ final class Signer
     /**
      * When `false` user does not need to sign, but will receive a copy of the signed document and signing log, see: [Copy only](#section/Additional-signing-methods/Copy-only).
      */
-    public function getNeedsToSign(): bool
+    public function getNeedsToSign(): ?bool
     {
         return $this->needsToSign;
     }
@@ -284,7 +284,7 @@ final class Signer
     /**
      * When `false` user does not need to sign, but will receive a copy of the signed document and signing log, see: [Copy only](#section/Additional-signing-methods/Copy-only).
      */
-    public function setNeedsToSign(bool $needsToSign): self
+    public function setNeedsToSign(?bool $needsToSign): self
     {
         $this->needsToSign = $needsToSign;
 
@@ -294,7 +294,7 @@ final class Signer
     /**
      * Require user to approve the document (without adding a signature), see: [Approve only](#section/Additional-signing-methods/Approve-only).
      */
-    public function getApproveOnly(): bool
+    public function getApproveOnly(): ?bool
     {
         return $this->approveOnly;
     }
@@ -302,7 +302,7 @@ final class Signer
     /**
      * Require user to approve the document (without adding a signature), see: [Approve only](#section/Additional-signing-methods/Approve-only).
      */
-    public function setApproveOnly(bool $approveOnly): self
+    public function setApproveOnly(?bool $approveOnly): self
     {
         $this->approveOnly = $approveOnly;
 
@@ -312,7 +312,7 @@ final class Signer
     /**
      * Send notifications about the document and a copy of the signed document and signing log, but don't require them to take any action, see: [Notify only](#section/Additional-signing-methods/Notify-only).
      */
-    public function getNotifyOnly(): bool
+    public function getNotifyOnly(): ?bool
     {
         return $this->notifyOnly;
     }
@@ -320,7 +320,7 @@ final class Signer
     /**
      * Send notifications about the document and a copy of the signed document and signing log, but don't require them to take any action, see: [Notify only](#section/Additional-signing-methods/Notify-only).
      */
-    public function setNotifyOnly(bool $notifyOnly): self
+    public function setNotifyOnly(?bool $notifyOnly): self
     {
         $this->notifyOnly = $notifyOnly;
 
@@ -330,7 +330,7 @@ final class Signer
     /**
      * When used in combination with an embed url on the sender, after sender has signed, they will be redirected to the next `in_person` signer, see: [In person signing](#section/Additional-signing-methods/In-person-signing).
      */
-    public function getInPerson(): bool
+    public function getInPerson(): ?bool
     {
         return $this->inPerson;
     }
@@ -338,19 +338,19 @@ final class Signer
     /**
      * When used in combination with an embed url on the sender, after sender has signed, they will be redirected to the next `in_person` signer, see: [In person signing](#section/Additional-signing-methods/In-person-signing).
      */
-    public function setInPerson(bool $inPerson): self
+    public function setInPerson(?bool $inPerson): self
     {
         $this->inPerson = $inPerson;
 
         return $this;
     }
 
-    public function getOrder(): int
+    public function getOrder(): ?int
     {
         return $this->order;
     }
 
-    public function setOrder(int $order): self
+    public function setOrder(?int $order): self
     {
         $this->order = $order;
 
@@ -369,24 +369,24 @@ final class Signer
         return $this;
     }
 
-    public function getForceLanguage(): bool
+    public function getForceLanguage(): ?bool
     {
         return $this->forceLanguage;
     }
 
-    public function setForceLanguage(bool $forceLanguage): self
+    public function setForceLanguage(?bool $forceLanguage): self
     {
         $this->forceLanguage = $forceLanguage;
 
         return $this;
     }
 
-    public function getEmailed(): bool
+    public function getEmailed(): ?bool
     {
         return $this->emailed;
     }
 
-    public function setEmailed(bool $emailed): self
+    public function setEmailed(?bool $emailed): self
     {
         $this->emailed = $emailed;
 
@@ -417,84 +417,84 @@ final class Signer
         return $this;
     }
 
-    public function getDeclined(): bool
+    public function getDeclined(): ?bool
     {
         return $this->declined;
     }
 
-    public function setDeclined(bool $declined): self
+    public function setDeclined(?bool $declined): self
     {
         $this->declined = $declined;
 
         return $this;
     }
 
-    public function getDeclinedOn(): DateTime
+    public function getDeclinedOn(): ?DateTime
     {
         return $this->declinedOn;
     }
 
-    public function setDeclinedOn(DateTime $declinedOn): self
+    public function setDeclinedOn(?DateTime $declinedOn): self
     {
         $this->declinedOn = $declinedOn;
 
         return $this;
     }
 
-    public function getForwarded(): bool
+    public function getForwarded(): ?bool
     {
         return $this->forwarded;
     }
 
-    public function setForwarded(bool $forwarded): self
+    public function setForwarded(?bool $forwarded): self
     {
         $this->forwarded = $forwarded;
 
         return $this;
     }
 
-    public function getForwardedOn(): DateTime
+    public function getForwardedOn(): ?DateTime
     {
         return $this->forwardedOn;
     }
 
-    public function setForwardedOn(DateTime $forwardedOn): self
+    public function setForwardedOn(?DateTime $forwardedOn): self
     {
         $this->forwardedOn = $forwardedOn;
 
         return $this;
     }
 
-    public function getForwardedToEmail(): string
+    public function getForwardedToEmail(): ?string
     {
         return $this->forwardedToEmail;
     }
 
-    public function setForwardedToEmail(string $forwardedToEmail): self
+    public function setForwardedToEmail(?string $forwardedToEmail): self
     {
         $this->forwardedToEmail = $forwardedToEmail;
 
         return $this;
     }
 
-    public function getForwardedReason(): string
+    public function getForwardedReason(): ?string
     {
         return $this->forwardedReason;
     }
 
-    public function setForwardedReason(string $forwardedReason): self
+    public function setForwardedReason(?string $forwardedReason): self
     {
         $this->forwardedReason = $forwardedReason;
 
         return $this;
     }
 
-    public function getMessage(): string
+    public function getMessage(): ?string
     {
         return $this->message;
     }
 
-    public function setMessage(string $message): self
+    public function setMessage(?string $message): self
     {
         $this->message = $message;
 
@@ -514,17 +514,17 @@ final class Signer
     }
 
     /**
-     * @return SignerInputs[]
+     * @return SignerInputs[]|null
      */
-    public function getInputs(): array
+    public function getInputs(): ?array
     {
         return $this->inputs;
     }
 
     /**
-     * @param SignerInputs[] $inputs
+     * @param SignerInputs[]|null $inputs
      */
-    public function setInputs(array $inputs): self
+    public function setInputs(?array $inputs): self
     {
         $this->inputs = $inputs;
 
@@ -549,12 +549,12 @@ final class Signer
         return $this;
     }
 
-    public function getEmbedUrl(): string
+    public function getEmbedUrl(): ?string
     {
         return $this->embedUrl;
     }
 
-    public function setEmbedUrl(string $embedUrl): self
+    public function setEmbedUrl(?string $embedUrl): self
     {
         $this->embedUrl = $embedUrl;
 
@@ -562,17 +562,17 @@ final class Signer
     }
 
     /**
-     * @return SignerAttachment[]
+     * @return SignerAttachment[]|null
      */
-    public function getAttachments(): array
+    public function getAttachments(): ?array
     {
         return $this->attachments;
     }
 
     /**
-     * @param SignerAttachment[] $attachments
+     * @param SignerAttachment[]|null $attachments
      */
-    public function setAttachments(array $attachments): self
+    public function setAttachments(?array $attachments): self
     {
         $this->attachments = $attachments;
 
@@ -603,12 +603,12 @@ final class Signer
         return $this;
     }
 
-    public function getAfterDocument(): string
+    public function getAfterDocument(): ?string
     {
         return $this->afterDocument;
     }
 
-    public function setAfterDocument(string $afterDocument): self
+    public function setAfterDocument(?string $afterDocument): self
     {
         $this->afterDocument = $afterDocument;
 
@@ -616,17 +616,17 @@ final class Signer
     }
 
     /**
-     * @return InlineDocumentSignerIntegrationData[]
+     * @return InlineDocumentSignerIntegrationData[]|null
      */
-    public function getIntegrations(): array
+    public function getIntegrations(): ?array
     {
         return $this->integrations;
     }
 
     /**
-     * @param InlineDocumentSignerIntegrationData[] $integrations
+     * @param InlineDocumentSignerIntegrationData[]|null $integrations
      */
-    public function setIntegrations(array $integrations): self
+    public function setIntegrations(?array $integrations): self
     {
         $this->integrations = $integrations;
 
@@ -636,7 +636,7 @@ final class Signer
     /**
      * Require the signer to enter this password before signing a document. This field is write only.
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -644,7 +644,7 @@ final class Signer
     /**
      * Require the signer to enter this password before signing a document. This field is write only.
      */
-    public function setPassword(string $password): self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
 

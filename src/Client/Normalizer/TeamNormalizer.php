@@ -6,7 +6,6 @@ namespace SignRequest\Client\Normalizer;
 
 use DateTime;
 use stdClass;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -32,46 +31,62 @@ final class TeamNormalizer implements DenormalizerInterface, NormalizerInterface
     public function denormalize($data, $class, string $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \SignRequest\Client\Model\Team();
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
+        } elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
         }
-        if (property_exists($data, 'subdomain')) {
+        if (property_exists($data, 'subdomain') && $data->{'subdomain'} !== null) {
             $object->setSubdomain($data->{'subdomain'});
+        } elseif (property_exists($data, 'subdomain') && $data->{'subdomain'} === null) {
+            $object->setSubdomain(null);
         }
-        if (property_exists($data, 'url')) {
+        if (property_exists($data, 'url') && $data->{'url'} !== null) {
             $object->setUrl($data->{'url'});
+        } elseif (property_exists($data, 'url') && $data->{'url'} === null) {
+            $object->setUrl(null);
         }
         if (property_exists($data, 'logo') && $data->{'logo'} !== null) {
             $object->setLogo($data->{'logo'});
         } elseif (property_exists($data, 'logo') && $data->{'logo'} === null) {
             $object->setLogo(null);
         }
-        if (property_exists($data, 'phone')) {
+        if (property_exists($data, 'phone') && $data->{'phone'} !== null) {
             $object->setPhone($data->{'phone'});
+        } elseif (property_exists($data, 'phone') && $data->{'phone'} === null) {
+            $object->setPhone(null);
         }
-        if (property_exists($data, 'primary_color')) {
+        if (property_exists($data, 'primary_color') && $data->{'primary_color'} !== null) {
             $object->setPrimaryColor($data->{'primary_color'});
+        } elseif (property_exists($data, 'primary_color') && $data->{'primary_color'} === null) {
+            $object->setPrimaryColor(null);
         }
         if (property_exists($data, 'events_callback_url') && $data->{'events_callback_url'} !== null) {
             $object->setEventsCallbackUrl($data->{'events_callback_url'});
         } elseif (property_exists($data, 'events_callback_url') && $data->{'events_callback_url'} === null) {
             $object->setEventsCallbackUrl(null);
         }
-        if (property_exists($data, 'members')) {
+        if (property_exists($data, 'members') && $data->{'members'} !== null) {
             $values = [];
             foreach ($data->{'members'} as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'SignRequest\\Client\\Model\\InlineTeamMember', 'json', $context);
             }
             $object->setMembers($values);
+        } elseif (property_exists($data, 'members') && $data->{'members'} === null) {
+            $object->setMembers(null);
         }
-        if (property_exists($data, 'delete_after')) {
+        if (property_exists($data, 'delete_after') && $data->{'delete_after'} !== null) {
             $object->setDeleteAfter(DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data->{'delete_after'}));
+        } elseif (property_exists($data, 'delete_after') && $data->{'delete_after'} === null) {
+            $object->setDeleteAfter(null);
         }
-        if (property_exists($data, 'sandbox')) {
+        if (property_exists($data, 'sandbox') && $data->{'sandbox'} !== null) {
             $object->setSandbox($data->{'sandbox'});
+        } elseif (property_exists($data, 'sandbox') && $data->{'sandbox'} === null) {
+            $object->setSandbox(null);
         }
 
         return $object;
@@ -82,17 +97,29 @@ final class TeamNormalizer implements DenormalizerInterface, NormalizerInterface
         $data = new stdClass();
         if ($object->getName() !== null) {
             $data->{'name'} = $object->getName();
+        } else {
+            $data->{'name'} = null;
         }
         if ($object->getSubdomain() !== null) {
             $data->{'subdomain'} = $object->getSubdomain();
+        } else {
+            $data->{'subdomain'} = null;
         }
         if ($object->getPhone() !== null) {
             $data->{'phone'} = $object->getPhone();
+        } else {
+            $data->{'phone'} = null;
         }
         if ($object->getPrimaryColor() !== null) {
             $data->{'primary_color'} = $object->getPrimaryColor();
+        } else {
+            $data->{'primary_color'} = null;
         }
-        $data->{'events_callback_url'} = $object->getEventsCallbackUrl();
+        if ($object->getEventsCallbackUrl() !== null) {
+            $data->{'events_callback_url'} = $object->getEventsCallbackUrl();
+        } else {
+            $data->{'events_callback_url'} = null;
+        }
 
         return $data;
     }

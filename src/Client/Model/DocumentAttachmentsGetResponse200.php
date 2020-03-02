@@ -7,7 +7,7 @@ namespace SignRequest\Client\Model;
 final class DocumentAttachmentsGetResponse200
 {
     /**
-     * @var int
+     * @var int|null
      */
     protected $count;
     /**
@@ -19,16 +19,16 @@ final class DocumentAttachmentsGetResponse200
      */
     protected $previous;
     /**
-     * @var DocumentAttachment[]
+     * @var DocumentAttachment[]|null
      */
     protected $results = [];
 
-    public function getCount(): int
+    public function getCount(): ?int
     {
         return $this->count;
     }
 
-    public function setCount(int $count): self
+    public function setCount(?int $count): self
     {
         $this->count = $count;
 
@@ -60,17 +60,17 @@ final class DocumentAttachmentsGetResponse200
     }
 
     /**
-     * @return DocumentAttachment[]
+     * @return DocumentAttachment[]|null
      */
-    public function getResults(): array
+    public function getResults(): ?array
     {
         return $this->results;
     }
 
     /**
-     * @param DocumentAttachment[] $results
+     * @param DocumentAttachment[]|null $results
      */
-    public function setResults(array $results): self
+    public function setResults(?array $results): self
     {
         $this->results = $results;
 

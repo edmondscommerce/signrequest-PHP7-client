@@ -9,15 +9,15 @@ use DateTime;
 final class Team
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $subdomain;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
@@ -25,11 +25,11 @@ final class Team
      */
     protected $logo;
     /**
-     * @var string
+     * @var string|null
      */
     protected $phone;
     /**
-     * @var string
+     * @var string|null
      */
     protected $primaryColor;
     /**
@@ -37,52 +37,52 @@ final class Team
      */
     protected $eventsCallbackUrl;
     /**
-     * @var InlineTeamMember[]
+     * @var InlineTeamMember[]|null
      */
     protected $members = [];
     /**
      * When filled this team will be deleted after this date.
      *
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $deleteAfter;
     /**
      * Indicates whether team is in Sandbox mode.
      *
-     * @var bool
+     * @var bool|null
      */
     protected $sandbox;
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getSubdomain(): string
+    public function getSubdomain(): ?string
     {
         return $this->subdomain;
     }
 
-    public function setSubdomain(string $subdomain): self
+    public function setSubdomain(?string $subdomain): self
     {
         $this->subdomain = $subdomain;
 
         return $this;
     }
 
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl(string $url): self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
 
@@ -101,24 +101,24 @@ final class Team
         return $this;
     }
 
-    public function getPhone(): string
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
 
-    public function setPhone(string $phone): self
+    public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
 
         return $this;
     }
 
-    public function getPrimaryColor(): string
+    public function getPrimaryColor(): ?string
     {
         return $this->primaryColor;
     }
 
-    public function setPrimaryColor(string $primaryColor): self
+    public function setPrimaryColor(?string $primaryColor): self
     {
         $this->primaryColor = $primaryColor;
 
@@ -138,17 +138,17 @@ final class Team
     }
 
     /**
-     * @return InlineTeamMember[]
+     * @return InlineTeamMember[]|null
      */
-    public function getMembers(): array
+    public function getMembers(): ?array
     {
         return $this->members;
     }
 
     /**
-     * @param InlineTeamMember[] $members
+     * @param InlineTeamMember[]|null $members
      */
-    public function setMembers(array $members): self
+    public function setMembers(?array $members): self
     {
         $this->members = $members;
 
@@ -158,7 +158,7 @@ final class Team
     /**
      * When filled this team will be deleted after this date.
      */
-    public function getDeleteAfter(): DateTime
+    public function getDeleteAfter(): ?DateTime
     {
         return $this->deleteAfter;
     }
@@ -166,7 +166,7 @@ final class Team
     /**
      * When filled this team will be deleted after this date.
      */
-    public function setDeleteAfter(DateTime $deleteAfter): self
+    public function setDeleteAfter(?DateTime $deleteAfter): self
     {
         $this->deleteAfter = $deleteAfter;
 
@@ -176,7 +176,7 @@ final class Team
     /**
      * Indicates whether team is in Sandbox mode.
      */
-    public function getSandbox(): bool
+    public function getSandbox(): ?bool
     {
         return $this->sandbox;
     }
@@ -184,7 +184,7 @@ final class Team
     /**
      * Indicates whether team is in Sandbox mode.
      */
-    public function setSandbox(bool $sandbox): self
+    public function setSandbox(?bool $sandbox): self
     {
         $this->sandbox = $sandbox;
 

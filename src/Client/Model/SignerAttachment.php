@@ -7,13 +7,13 @@ namespace SignRequest\Client\Model;
 final class SignerAttachment
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $uuid;
     /**
      * Defaults to filename.
      *
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
@@ -21,16 +21,16 @@ final class SignerAttachment
      */
     protected $file;
     /**
-     * @var RequiredAttachment
+     * @var RequiredAttachment|null
      */
     protected $forAttachment;
 
-    public function getUuid(): string
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
 
-    public function setUuid(string $uuid): self
+    public function setUuid(?string $uuid): self
     {
         $this->uuid = $uuid;
 
@@ -40,7 +40,7 @@ final class SignerAttachment
     /**
      * Defaults to filename.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -48,7 +48,7 @@ final class SignerAttachment
     /**
      * Defaults to filename.
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -67,12 +67,12 @@ final class SignerAttachment
         return $this;
     }
 
-    public function getForAttachment(): RequiredAttachment
+    public function getForAttachment(): ?RequiredAttachment
     {
         return $this->forAttachment;
     }
 
-    public function setForAttachment(RequiredAttachment $forAttachment): self
+    public function setForAttachment(?RequiredAttachment $forAttachment): self
     {
         $this->forAttachment = $forAttachment;
 

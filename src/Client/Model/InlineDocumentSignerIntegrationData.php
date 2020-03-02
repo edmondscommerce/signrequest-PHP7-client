@@ -11,7 +11,7 @@ final class InlineDocumentSignerIntegrationData
      */
     protected $integration;
     /**
-     * @var mixed
+     * @var mixed|null
      */
     protected $integrationData;
 

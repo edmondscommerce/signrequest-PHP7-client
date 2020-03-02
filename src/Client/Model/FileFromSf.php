@@ -7,48 +7,48 @@ namespace SignRequest\Client\Model;
 final class FileFromSf
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $objectType;
     /**
-     * @var string
+     * @var string|null
      */
     protected $objectId;
     /**
-     * @var string
+     * @var string|null
      */
     protected $uid;
 
-    public function getObjectType(): string
+    public function getObjectType(): ?string
     {
         return $this->objectType;
     }
 
-    public function setObjectType(string $objectType): self
+    public function setObjectType(?string $objectType): self
     {
         $this->objectType = $objectType;
 
         return $this;
     }
 
-    public function getObjectId(): string
+    public function getObjectId(): ?string
     {
         return $this->objectId;
     }
 
-    public function setObjectId(string $objectId): self
+    public function setObjectId(?string $objectId): self
     {
         $this->objectId = $objectId;
 
         return $this;
     }
 
-    public function getUid(): string
+    public function getUid(): ?string
     {
         return $this->uid;
     }
 
-    public function setUid(string $uid): self
+    public function setUid(?string $uid): self
     {
         $this->uid = $uid;
 

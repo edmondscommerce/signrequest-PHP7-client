@@ -7,48 +7,48 @@ namespace SignRequest\Client\Model;
 final class DocumentSignerTemplateConf
 {
     /**
-     * @var int
+     * @var int|null
      */
     protected $signerIndex;
     /**
      * When `false` user does not need to sign, but will receive a copy of the signed document and signing log, see: [Copy only](#section/Additional-signing-methods/Copy-only).
      *
-     * @var bool
+     * @var bool|null
      */
     protected $needsToSign;
     /**
      * Require user to approve the document (without adding a signature), see: [Approve only](#section/Additional-signing-methods/Approve-only).
      *
-     * @var bool
+     * @var bool|null
      */
     protected $approveOnly;
     /**
      * Send notifications about the document and a copy of the signed document and signing log, but don't require them to take any action, see: [Notify only](#section/Additional-signing-methods/Notify-only).
      *
-     * @var bool
+     * @var bool|null
      */
     protected $notifyOnly;
     /**
      * When used in combination with an embed url on the sender, after sender has signed, they will be redirected to the next `in_person` signer, see: [In person signing](#section/Additional-signing-methods/In-person-signing).
      *
-     * @var bool
+     * @var bool|null
      */
     protected $inPerson;
     /**
-     * @var int
+     * @var int|null
      */
     protected $order;
     /**
-     * @var Placeholder[]
+     * @var Placeholder[]|null
      */
     protected $placeholders = [];
 
-    public function getSignerIndex(): int
+    public function getSignerIndex(): ?int
     {
         return $this->signerIndex;
     }
 
-    public function setSignerIndex(int $signerIndex): self
+    public function setSignerIndex(?int $signerIndex): self
     {
         $this->signerIndex = $signerIndex;
 
@@ -58,7 +58,7 @@ final class DocumentSignerTemplateConf
     /**
      * When `false` user does not need to sign, but will receive a copy of the signed document and signing log, see: [Copy only](#section/Additional-signing-methods/Copy-only).
      */
-    public function getNeedsToSign(): bool
+    public function getNeedsToSign(): ?bool
     {
         return $this->needsToSign;
     }
@@ -66,7 +66,7 @@ final class DocumentSignerTemplateConf
     /**
      * When `false` user does not need to sign, but will receive a copy of the signed document and signing log, see: [Copy only](#section/Additional-signing-methods/Copy-only).
      */
-    public function setNeedsToSign(bool $needsToSign): self
+    public function setNeedsToSign(?bool $needsToSign): self
     {
         $this->needsToSign = $needsToSign;
 
@@ -76,7 +76,7 @@ final class DocumentSignerTemplateConf
     /**
      * Require user to approve the document (without adding a signature), see: [Approve only](#section/Additional-signing-methods/Approve-only).
      */
-    public function getApproveOnly(): bool
+    public function getApproveOnly(): ?bool
     {
         return $this->approveOnly;
     }
@@ -84,7 +84,7 @@ final class DocumentSignerTemplateConf
     /**
      * Require user to approve the document (without adding a signature), see: [Approve only](#section/Additional-signing-methods/Approve-only).
      */
-    public function setApproveOnly(bool $approveOnly): self
+    public function setApproveOnly(?bool $approveOnly): self
     {
         $this->approveOnly = $approveOnly;
 
@@ -94,7 +94,7 @@ final class DocumentSignerTemplateConf
     /**
      * Send notifications about the document and a copy of the signed document and signing log, but don't require them to take any action, see: [Notify only](#section/Additional-signing-methods/Notify-only).
      */
-    public function getNotifyOnly(): bool
+    public function getNotifyOnly(): ?bool
     {
         return $this->notifyOnly;
     }
@@ -102,7 +102,7 @@ final class DocumentSignerTemplateConf
     /**
      * Send notifications about the document and a copy of the signed document and signing log, but don't require them to take any action, see: [Notify only](#section/Additional-signing-methods/Notify-only).
      */
-    public function setNotifyOnly(bool $notifyOnly): self
+    public function setNotifyOnly(?bool $notifyOnly): self
     {
         $this->notifyOnly = $notifyOnly;
 
@@ -112,7 +112,7 @@ final class DocumentSignerTemplateConf
     /**
      * When used in combination with an embed url on the sender, after sender has signed, they will be redirected to the next `in_person` signer, see: [In person signing](#section/Additional-signing-methods/In-person-signing).
      */
-    public function getInPerson(): bool
+    public function getInPerson(): ?bool
     {
         return $this->inPerson;
     }
@@ -120,19 +120,19 @@ final class DocumentSignerTemplateConf
     /**
      * When used in combination with an embed url on the sender, after sender has signed, they will be redirected to the next `in_person` signer, see: [In person signing](#section/Additional-signing-methods/In-person-signing).
      */
-    public function setInPerson(bool $inPerson): self
+    public function setInPerson(?bool $inPerson): self
     {
         $this->inPerson = $inPerson;
 
         return $this;
     }
 
-    public function getOrder(): int
+    public function getOrder(): ?int
     {
         return $this->order;
     }
 
-    public function setOrder(int $order): self
+    public function setOrder(?int $order): self
     {
         $this->order = $order;
 
@@ -140,17 +140,17 @@ final class DocumentSignerTemplateConf
     }
 
     /**
-     * @return Placeholder[]
+     * @return Placeholder[]|null
      */
-    public function getPlaceholders(): array
+    public function getPlaceholders(): ?array
     {
         return $this->placeholders;
     }
 
     /**
-     * @param Placeholder[] $placeholders
+     * @param Placeholder[]|null $placeholders
      */
-    public function setPlaceholders(array $placeholders): self
+    public function setPlaceholders(?array $placeholders): self
     {
         $this->placeholders = $placeholders;
 

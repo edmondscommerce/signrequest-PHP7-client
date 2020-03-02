@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use stdClass;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,17 +30,23 @@ final class InlineTeamNormalizer implements DenormalizerInterface, NormalizerInt
     public function denormalize($data, $class, string $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \SignRequest\Client\Model\InlineTeam();
-        if (property_exists($data, 'name')) {
+        if (property_exists($data, 'name') && $data->{'name'} !== null) {
             $object->setName($data->{'name'});
+        } elseif (property_exists($data, 'name') && $data->{'name'} === null) {
+            $object->setName(null);
         }
-        if (property_exists($data, 'subdomain')) {
+        if (property_exists($data, 'subdomain') && $data->{'subdomain'} !== null) {
             $object->setSubdomain($data->{'subdomain'});
+        } elseif (property_exists($data, 'subdomain') && $data->{'subdomain'} === null) {
+            $object->setSubdomain(null);
         }
-        if (property_exists($data, 'url')) {
+        if (property_exists($data, 'url') && $data->{'url'} !== null) {
             $object->setUrl($data->{'url'});
+        } elseif (property_exists($data, 'url') && $data->{'url'} === null) {
+            $object->setUrl(null);
         }
 
         return $object;

@@ -9,11 +9,11 @@ use DateTime;
 final class WebhookSubscription
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @var string
+     * @var string|null
      */
     protected $uuid;
     /**
@@ -23,11 +23,11 @@ final class WebhookSubscription
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $eventType;
     /**
-     * @var string
+     * @var string|null
      */
     protected $callbackUrl;
     /**
@@ -35,32 +35,32 @@ final class WebhookSubscription
      */
     protected $integration;
     /**
-     * @var WebhookSubscriptionTeam
+     * @var WebhookSubscriptionTeam|null
      */
     protected $team;
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $created;
 
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl(string $url): self
+    public function setUrl(?string $url): self
     {
         $this->url = $url;
 
         return $this;
     }
 
-    public function getUuid(): string
+    public function getUuid(): ?string
     {
         return $this->uuid;
     }
 
-    public function setUuid(string $uuid): self
+    public function setUuid(?string $uuid): self
     {
         $this->uuid = $uuid;
 
@@ -85,24 +85,24 @@ final class WebhookSubscription
         return $this;
     }
 
-    public function getEventType(): string
+    public function getEventType(): ?string
     {
         return $this->eventType;
     }
 
-    public function setEventType(string $eventType): self
+    public function setEventType(?string $eventType): self
     {
         $this->eventType = $eventType;
 
         return $this;
     }
 
-    public function getCallbackUrl(): string
+    public function getCallbackUrl(): ?string
     {
         return $this->callbackUrl;
     }
 
-    public function setCallbackUrl(string $callbackUrl): self
+    public function setCallbackUrl(?string $callbackUrl): self
     {
         $this->callbackUrl = $callbackUrl;
 
@@ -121,24 +121,24 @@ final class WebhookSubscription
         return $this;
     }
 
-    public function getTeam(): WebhookSubscriptionTeam
+    public function getTeam(): ?WebhookSubscriptionTeam
     {
         return $this->team;
     }
 
-    public function setTeam(WebhookSubscriptionTeam $team): self
+    public function setTeam(?WebhookSubscriptionTeam $team): self
     {
         $this->team = $team;
 
         return $this;
     }
 
-    public function getCreated(): DateTime
+    public function getCreated(): ?DateTime
     {
         return $this->created;
     }
 
-    public function setCreated(DateTime $created): self
+    public function setCreated(?DateTime $created): self
     {
         $this->created = $created;
 

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use stdClass;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,29 +30,43 @@ final class TeamMemberNormalizer implements DenormalizerInterface, NormalizerInt
     public function denormalize($data, $class, string $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \SignRequest\Client\Model\TeamMember();
-        if (property_exists($data, 'uuid')) {
+        if (property_exists($data, 'uuid') && $data->{'uuid'} !== null) {
             $object->setUuid($data->{'uuid'});
+        } elseif (property_exists($data, 'uuid') && $data->{'uuid'} === null) {
+            $object->setUuid(null);
         }
-        if (property_exists($data, 'url')) {
+        if (property_exists($data, 'url') && $data->{'url'} !== null) {
             $object->setUrl($data->{'url'});
+        } elseif (property_exists($data, 'url') && $data->{'url'} === null) {
+            $object->setUrl(null);
         }
-        if (property_exists($data, 'user')) {
+        if (property_exists($data, 'user') && $data->{'user'} !== null) {
             $object->setUser($this->denormalizer->denormalize($data->{'user'}, 'SignRequest\\Client\\Model\\User', 'json', $context));
+        } elseif (property_exists($data, 'user') && $data->{'user'} === null) {
+            $object->setUser(null);
         }
-        if (property_exists($data, 'team')) {
+        if (property_exists($data, 'team') && $data->{'team'} !== null) {
             $object->setTeam($this->denormalizer->denormalize($data->{'team'}, 'SignRequest\\Client\\Model\\TeamMemberTeam', 'json', $context));
+        } elseif (property_exists($data, 'team') && $data->{'team'} === null) {
+            $object->setTeam(null);
         }
-        if (property_exists($data, 'is_admin')) {
+        if (property_exists($data, 'is_admin') && $data->{'is_admin'} !== null) {
             $object->setIsAdmin($data->{'is_admin'});
+        } elseif (property_exists($data, 'is_admin') && $data->{'is_admin'} === null) {
+            $object->setIsAdmin(null);
         }
-        if (property_exists($data, 'is_active')) {
+        if (property_exists($data, 'is_active') && $data->{'is_active'} !== null) {
             $object->setIsActive($data->{'is_active'});
+        } elseif (property_exists($data, 'is_active') && $data->{'is_active'} === null) {
+            $object->setIsActive(null);
         }
-        if (property_exists($data, 'is_owner')) {
+        if (property_exists($data, 'is_owner') && $data->{'is_owner'} !== null) {
             $object->setIsOwner($data->{'is_owner'});
+        } elseif (property_exists($data, 'is_owner') && $data->{'is_owner'} === null) {
+            $object->setIsOwner(null);
         }
 
         return $object;
@@ -64,15 +77,23 @@ final class TeamMemberNormalizer implements DenormalizerInterface, NormalizerInt
         $data = new stdClass();
         if ($object->getUser() !== null) {
             $data->{'user'} = $this->normalizer->normalize($object->getUser(), 'json', $context);
+        } else {
+            $data->{'user'} = null;
         }
         if ($object->getIsAdmin() !== null) {
             $data->{'is_admin'} = $object->getIsAdmin();
+        } else {
+            $data->{'is_admin'} = null;
         }
         if ($object->getIsActive() !== null) {
             $data->{'is_active'} = $object->getIsActive();
+        } else {
+            $data->{'is_active'} = null;
         }
         if ($object->getIsOwner() !== null) {
             $data->{'is_owner'} = $object->getIsOwner();
+        } else {
+            $data->{'is_owner'} = null;
         }
 
         return $data;

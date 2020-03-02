@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace SignRequest\Client\Normalizer;
 
 use stdClass;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -31,17 +30,23 @@ final class FileFromSfNormalizer implements DenormalizerInterface, NormalizerInt
     public function denormalize($data, $class, string $format = null, array $context = [])
     {
         if (!is_object($data)) {
-            throw new InvalidArgumentException(sprintf('Given $data is not an object (%s given). We need an object in order to continue denormalize method.', gettype($data)));
+            return null;
         }
         $object = new \SignRequest\Client\Model\FileFromSf();
-        if (property_exists($data, 'object_type')) {
+        if (property_exists($data, 'object_type') && $data->{'object_type'} !== null) {
             $object->setObjectType($data->{'object_type'});
+        } elseif (property_exists($data, 'object_type') && $data->{'object_type'} === null) {
+            $object->setObjectType(null);
         }
-        if (property_exists($data, 'object_id')) {
+        if (property_exists($data, 'object_id') && $data->{'object_id'} !== null) {
             $object->setObjectId($data->{'object_id'});
+        } elseif (property_exists($data, 'object_id') && $data->{'object_id'} === null) {
+            $object->setObjectId(null);
         }
-        if (property_exists($data, 'uid')) {
+        if (property_exists($data, 'uid') && $data->{'uid'} !== null) {
             $object->setUid($data->{'uid'});
+        } elseif (property_exists($data, 'uid') && $data->{'uid'} === null) {
+            $object->setUid(null);
         }
 
         return $object;
@@ -52,12 +57,18 @@ final class FileFromSfNormalizer implements DenormalizerInterface, NormalizerInt
         $data = new stdClass();
         if ($object->getObjectType() !== null) {
             $data->{'object_type'} = $object->getObjectType();
+        } else {
+            $data->{'object_type'} = null;
         }
         if ($object->getObjectId() !== null) {
             $data->{'object_id'} = $object->getObjectId();
+        } else {
+            $data->{'object_id'} = null;
         }
         if ($object->getUid() !== null) {
             $data->{'uid'} = $object->getUid();
+        } else {
+            $data->{'uid'} = null;
         }
 
         return $data;
