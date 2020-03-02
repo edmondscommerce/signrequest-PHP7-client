@@ -41,7 +41,7 @@ final class DocumentSignerTemplateConf
     /**
      * @var Placeholder[]
      */
-    protected $placeholders;
+    protected $placeholders = [];
 
     public function getSignerIndex(): int
     {

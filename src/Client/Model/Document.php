@@ -87,11 +87,11 @@ final class Document
      *
      * @var InlinePrefillTags[]
      */
-    protected $prefillTags;
+    protected $prefillTags = [];
     /**
      * @var InlineIntegrationData[]
      */
-    protected $integrations;
+    protected $integrations = [];
     /**
      * @var FileFromSf
      */
@@ -143,7 +143,7 @@ final class Document
     /**
      * @var DocumentAttachment[]
      */
-    protected $attachments;
+    protected $attachments = [];
     /**
      * Date and time calculated using `auto_delete_days` after which a finished document (signed/cancelled/declined) will be automatically deleted.
      *

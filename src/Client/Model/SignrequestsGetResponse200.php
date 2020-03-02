@@ -21,7 +21,7 @@ final class SignrequestsGetResponse200
     /**
      * @var SignRequest[]
      */
-    protected $results;
+    protected $results = [];
 
     public function getCount(): int
     {

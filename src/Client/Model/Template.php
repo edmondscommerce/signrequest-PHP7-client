@@ -37,7 +37,7 @@ final class Template
     /**
      * @var DocumentSignerTemplateConf[]
      */
-    protected $signers;
+    protected $signers = [];
 
     public function getUrl(): string
     {

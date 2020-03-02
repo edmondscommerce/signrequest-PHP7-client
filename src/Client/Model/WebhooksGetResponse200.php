@@ -21,7 +21,7 @@ final class WebhooksGetResponse200
     /**
      * @var WebhookSubscription[]
      */
-    protected $results;
+    protected $results = [];
 
     public function getCount(): int
     {

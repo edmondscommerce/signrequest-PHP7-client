@@ -70,7 +70,7 @@
                                             "nullable": true
                                         },
                                         "results": {
-                                            "type": "array",
+                                            "type": "array", "default": [],
                                             "items": {
                                                 "$ref": "#/components/schemas/AuthToken"
                                             }
@@ -187,7 +187,7 @@
                                             "nullable": true
                                         },
                                         "results": {
-                                            "type": "array",
+                                            "type": "array", "default": [],
                                             "items": {
                                                 "$ref": "#/components/schemas/DocumentAttachment"
                                             }
@@ -454,7 +454,7 @@
                                             "nullable": true
                                         },
                                         "results": {
-                                            "type": "array",
+                                            "type": "array", "default": [],
                                             "items": {
                                                 "$ref": "#/components/schemas/DocumentSearch"
                                             }
@@ -484,7 +484,7 @@
                                             "nullable": true
                                         },
                                         "results": {
-                                            "type": "array",
+                                            "type": "array", "default": [],
                                             "items": {
                                                 "$ref": "#/components/schemas/DocumentSearch"
                                             }
@@ -514,7 +514,7 @@
                                             "nullable": true
                                         },
                                         "results": {
-                                            "type": "array",
+                                            "type": "array", "default": [],
                                             "items": {
                                                 "$ref": "#/components/schemas/DocumentSearch"
                                             }
@@ -685,7 +685,7 @@
                                             "nullable": true
                                         },
                                         "results": {
-                                            "type": "array",
+                                            "type": "array", "default": [],
                                             "items": {
                                                 "$ref": "#/components/schemas/Document"
                                             }
@@ -1033,7 +1033,7 @@
                                             "nullable": true
                                         },
                                         "results": {
-                                            "type": "array",
+                                            "type": "array", "default": [],
                                             "items": {
                                                 "$ref": "#/components/schemas/Event"
                                             }
@@ -1251,7 +1251,7 @@
                                             "nullable": true
                                         },
                                         "results": {
-                                            "type": "array",
+                                            "type": "array", "default": [],
                                             "items": {
                                                 "$ref": "#/components/schemas/SignRequest"
                                             }
@@ -1635,7 +1635,7 @@
                                             "nullable": true
                                         },
                                         "results": {
-                                            "type": "array",
+                                            "type": "array", "default": [],
                                             "items": {
                                                 "$ref": "#/components/schemas/TeamMember"
                                             }
@@ -1779,7 +1779,7 @@
                                             "nullable": true
                                         },
                                         "results": {
-                                            "type": "array",
+                                            "type": "array", "default": [],
                                             "items": {
                                                 "$ref": "#/components/schemas/Team"
                                             }
@@ -2092,7 +2092,7 @@
                                             "nullable": true
                                         },
                                         "results": {
-                                            "type": "array",
+                                            "type": "array", "default": [],
                                             "items": {
                                                 "$ref": "#/components/schemas/Template"
                                             }
@@ -2236,7 +2236,7 @@
                                             "nullable": true
                                         },
                                         "results": {
-                                            "type": "array",
+                                            "type": "array", "default": [],
                                             "items": {
                                                 "$ref": "#/components/schemas/WebhookSubscription"
                                             }
@@ -2738,7 +2738,7 @@
                         "type": "integer"
                     },
                     "signer_emails": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "type": "string"
                         },
@@ -3207,7 +3207,7 @@
                         "nullable": true
                     },
                     "inputs": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/SignerInputs"
                         },
@@ -3227,7 +3227,7 @@
                         "minLength": 1
                     },
                     "attachments": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/SignerAttachment"
                         },
@@ -3253,7 +3253,7 @@
                         "format": "uri"
                     },
                     "integrations": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/InlineDocumentSignerIntegrationData"
                         }
@@ -3314,7 +3314,7 @@
                         "minLength": 1
                     },
                     "required_attachments": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/RequiredAttachment"
                         },
@@ -3402,7 +3402,7 @@
                         "readOnly": true
                     },
                     "signers": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/Signer"
                         },
@@ -3555,13 +3555,13 @@
                     },
                     "prefill_tags": {
                         "description": "Prefill signer input data, see [prefill tags](#section/Preparing-a-document/Prefill-tags-templates)",
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/InlinePrefillTags"
                         }
                     },
                     "integrations": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/InlineIntegrationData"
                         }
@@ -3660,7 +3660,7 @@
                                 "minLength": 1
                             },
                             "required_attachments": {
-                                "type": "array",
+                                "type": "array", "default": [],
                                 "items": {
                                     "$ref": "#/components/schemas/RequiredAttachment"
                                 },
@@ -3748,7 +3748,7 @@
                                 "readOnly": true
                             },
                             "signers": {
-                                "type": "array",
+                                "type": "array", "default": [],
                                 "items": {
                                     "$ref": "#/components/schemas/Signer"
                                 },
@@ -3798,7 +3798,7 @@
                         "minLength": 1
                     },
                     "attachments": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/DocumentAttachment"
                         },
@@ -3983,7 +3983,7 @@
                     },
                     "required_attachments": {
                         "description": "Attachments that signers are required to upload",
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/RequiredAttachment"
                         }
@@ -4061,7 +4061,7 @@
                         "type": "boolean"
                     },
                     "signers": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/Signer"
                         }
@@ -4166,13 +4166,13 @@
                     },
                     "prefill_tags": {
                         "description": "Prefill signer input data, see [prefill tags](#section/Preparing-a-document/Prefill-tags-templates)",
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/InlinePrefillTags"
                         }
                     },
                     "integrations": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/InlineIntegrationData"
                         }
@@ -4251,7 +4251,7 @@
                     },
                     "required_attachments": {
                         "description": "Attachments that signers are required to upload",
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/RequiredAttachment"
                         }
@@ -4329,7 +4329,7 @@
                         "type": "boolean"
                     },
                     "signers": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/Signer"
                         }
@@ -4512,7 +4512,7 @@
                         "nullable": true
                     },
                     "members": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/InlineTeamMember"
                         },
@@ -4650,7 +4650,7 @@
                         "minimum": 0
                     },
                     "placeholders": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/Placeholder"
                         },
@@ -4720,7 +4720,7 @@
                         ]
                     },
                     "signers": {
-                        "type": "array",
+                        "type": "array", "default": [],
                         "items": {
                             "$ref": "#/components/schemas/DocumentSignerTemplateConf"
                         },

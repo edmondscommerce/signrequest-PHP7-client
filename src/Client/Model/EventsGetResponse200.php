@@ -21,7 +21,7 @@ final class EventsGetResponse200
     /**
      * @var Event[]
      */
-    protected $results;
+    protected $results = [];
 
     public function getCount(): int
     {

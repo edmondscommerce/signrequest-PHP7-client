@@ -45,7 +45,7 @@ final class SignRequestQuickCreate
      *
      * @var RequiredAttachment[]
      */
-    protected $requiredAttachments;
+    protected $requiredAttachments = [];
     /**
      * Disable uploading/adding of attachments.
      *
@@ -121,7 +121,7 @@ final class SignRequestQuickCreate
     /**
      * @var Signer[]
      */
-    protected $signers;
+    protected $signers = [];
     /**
      * @var string
      */
@@ -199,11 +199,11 @@ final class SignRequestQuickCreate
      *
      * @var InlinePrefillTags[]
      */
-    protected $prefillTags;
+    protected $prefillTags = [];
     /**
      * @var InlineIntegrationData[]
      */
-    protected $integrations;
+    protected $integrations = [];
     /**
      * @var FileFromSf
      */

@@ -43,7 +43,7 @@ final class DocumentSignrequest
     /**
      * @var RequiredAttachment[]
      */
-    protected $requiredAttachments;
+    protected $requiredAttachments = [];
     /**
      * Disable uploading/adding of attachments.
      *
@@ -119,7 +119,7 @@ final class DocumentSignrequest
     /**
      * @var Signer[]
      */
-    protected $signers;
+    protected $signers = [];
     /**
      * @var string
      */

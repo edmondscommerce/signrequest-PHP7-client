@@ -47,7 +47,7 @@ final class DocumentSearch
     /**
      * @var string[]
      */
-    protected $signerEmails;
+    protected $signerEmails = [];
     /**
      * @var string
      */

@@ -21,7 +21,7 @@ final class ApiTokensGetResponse200
     /**
      * @var AuthToken[]
      */
-    protected $results;
+    protected $results = [];
 
     public function getCount(): int
     {

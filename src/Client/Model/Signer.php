@@ -127,7 +127,7 @@ final class Signer
     /**
      * @var SignerInputs[]
      */
-    protected $inputs;
+    protected $inputs = [];
     /**
      * Place an approval stamp on a document when a signer approves a document.
      *
@@ -141,7 +141,7 @@ final class Signer
     /**
      * @var SignerAttachment[]
      */
-    protected $attachments;
+    protected $attachments = [];
     /**
      * @var string|null
      */
@@ -157,7 +157,7 @@ final class Signer
     /**
      * @var InlineDocumentSignerIntegrationData[]
      */
-    protected $integrations;
+    protected $integrations = [];
     /**
      * Require the signer to enter this password before signing a document. This field is write only.
      *

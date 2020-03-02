@@ -39,7 +39,7 @@ final class Team
     /**
      * @var InlineTeamMember[]
      */
-    protected $members;
+    protected $members = [];
     /**
      * When filled this team will be deleted after this date.
      *

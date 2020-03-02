@@ -21,7 +21,7 @@ final class TeamMembersGetResponse200
     /**
      * @var TeamMember[]
      */
-    protected $results;
+    protected $results = [];
 
     public function getCount(): int
     {

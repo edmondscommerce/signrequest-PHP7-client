@@ -21,7 +21,7 @@ final class DocumentAttachmentsGetResponse200
     /**
      * @var DocumentAttachment[]
      */
-    protected $results;
+    protected $results = [];
 
     public function getCount(): int
     {

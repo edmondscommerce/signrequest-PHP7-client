@@ -21,7 +21,7 @@ final class TemplatesGetResponse200
     /**
      * @var Template[]
      */
-    protected $results;
+    protected $results = [];
 
     public function getCount(): int
     {

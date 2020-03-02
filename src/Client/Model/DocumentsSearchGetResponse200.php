@@ -21,7 +21,7 @@ final class DocumentsSearchGetResponse200
     /**
      * @var DocumentSearch[]
      */
-    protected $results;
+    protected $results = [];
 
     public function getCount(): int
     {
